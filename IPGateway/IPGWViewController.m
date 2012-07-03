@@ -18,6 +18,7 @@
     NSURLConnection * connection2;
     NSMutableData* receivedData3;
     NSURLConnection * connection3;
+    BOOL firstAppear;
 }
 
 @synthesize  useridTextField, passwordTextField, globalSwitch, rememberSwitch;
@@ -35,6 +36,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    firstAppear = YES;
 }
 
 - (void)viewDidUnload
@@ -47,9 +49,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [logoutButton setEnabled:NO];
-    [useridTextField setText:[[NSUserDefaults standardUserDefaults] valueForKey:@"rememberedUser"]];
-    [passwordTextField setText:[[NSUserDefaults standardUserDefaults] valueForKey:@"rememberedPwd"]];
+    if(firstAppear) {
+        [logoutButton setEnabled:NO];
+        [useridTextField setText:[[NSUserDefaults standardUserDefaults] valueForKey:@"rememberedUser"]];
+        [passwordTextField setText:[[NSUserDefaults standardUserDefaults] valueForKey:@"rememberedPwd"]];
+    }
+    else firstAppear = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -78,6 +83,21 @@
 }
 
 
+- (NSString*) findItem:(NSString *) item ofInfomation:(NSString*) information {
+    NSString *infoItem = @"unknown";
+    if ([item isEqualToString:@"BALANCE"]) {
+        NSRange range1 = [information rangeOfString:@"BALANCE="];
+        NSRange range2 = [information rangeOfString:@"IP="];
+        infoItem = [information substringWithRange:NSMakeRange(range1.location + range1.length, range2.location - (range1.location + range1.length))];
+    } else if ([item isEqualToString:@"IP"]) {
+        NSRange range1 = [information rangeOfString:@"IP="];
+        NSRange range2 = [information rangeOfString:@"MESSAGE="];
+        infoItem = [information substringWithRange:NSMakeRange(range1.location + range1.length, range2.location - (range1.location + range1.length))];
+    }
+        
+    return infoItem;
+}
+
 #pragma mark - User interface
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
@@ -89,26 +109,29 @@
 {
     if (sender == globalSwitch && [sender isOn]) {
         UIAlertView *alert = [[UIAlertView alloc] 
-                              initWithTitle: @"Message" 
-                              message:@"Global access will need extra cost."
-                              delegate:self
-                              cancelButtonTitle:@"Cancel"
-                              otherButtonTitles:@"Yes", nil];
-        //[alert show];
+                              initWithTitle: NSLocalizedString(@"reminder_alert_title",@"Reminder") 
+                              message:NSLocalizedString(@"reminder_alert_message",@"Global access may need extra cost, please remember to logout when finish using.")
+                              delegate:nil
+                              cancelButtonTitle:NSLocalizedString(@"reminder_alert_cancel", @"Of course I will")
+                              otherButtonTitles:nil];
+        [alert show];
         [alert release];
     }
-    
-    if (sender == rememberSwitch && [sender isOn] == NO) {
-        [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"rememberedUser"];
-        [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"rememberedPwd"];
-    }
 }
+
+/*
+ https://its.pku.edu.cn:5428/ipgatewayofpku?uid=1101111141&password=pas&operation=connect&range=2&timeout=2
+ 
+ operation: connect, disconnect, disconnectall
+ range: 1(fee), 2(free)
+ 
+ */
 
 - (void) loginButtonPressed:(id)sender
 {
     [useridTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
-    [messageTextView setText:@"logging in ..."];
+    [messageTextView setText:NSLocalizedString(@"logging_in", @"logging in ...")];
     
     username = [[self useridTextField] text];
     password = [[self passwordTextField] text];
@@ -117,9 +140,9 @@
 
     NSString *errorMessage = nil;
     if ([username isEqualToString:@""]) {
-        errorMessage = @"user ID required! - Please input.";
+        errorMessage = NSLocalizedString(@"no_username", @"user ID required! - Please input.");
     } else if ([password isEqualToString:@""]) {
-        errorMessage = @"password required! - Please input.";
+        errorMessage = NSLocalizedString(@"no_password", @"password required! - Please input.");
     }
     
     if (errorMessage) {
@@ -129,14 +152,25 @@
     
     if ([logoutButton isEnabled]) {
         NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease]; 
-        [request setURL:[NSURL URLWithString:@"https://its.pku.edu.cn/netportal/shutdown"]];  
-        [request setHTTPMethod:@"GET"]; 
+        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://its.pku.edu.cn:5428/ipgatewayofpku?uid=%@&password=%@&operation=disconnect&range=%d&timeout=3", username, password, 2]]];  
+        [request setHTTPMethod:@"GET"];
+        [request setTimeoutInterval:15];
         [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     }
     
+    int range = 2; //2 for free
+    if ([globalSwitch isOn]) {
+        range = 1; //1 for fee; can't be others
+    }
+    NSString *requestString = [NSString stringWithFormat:@"https://its.pku.edu.cn:5428/ipgatewayofpku?uid=%@&password=%@&operation=connect&range=%d&timeout=3", username, password, range];
+#ifdef DEBUG
+    NSLog(@"%@", requestString);
+#endif
     NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease]; 
-    [request setURL:[NSURL URLWithString:@"https://its.pku.edu.cn/netportal/"]];  
+    [request setURL:[NSURL URLWithString:requestString]];  
     [request setHTTPMethod:@"GET"]; 
+    [request setTimeoutInterval:45];
+    
     connection1 = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     if (connection1) {
         // Create the NSMutableData to hold the received data.
@@ -144,56 +178,46 @@
         receivedData1 = [[NSMutableData data] retain];
     } else {
         // Inform the user that the connection failed.
-        [messageTextView setText:@"connection init failed !"];
+        [messageTextView setText:NSLocalizedString(@"connection_init_failed", @"connection init failed! It's terrible.")];
     }
 }
 
 - (void) logoutButtonPressed:(id)sender
 {
-    [messageTextView setText:@"logging out ..."];
+    [messageTextView setText:NSLocalizedString(@"logging_out", @"logging out ...")];
 
-    NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];  
-    [request setURL:[NSURL URLWithString:@"https://its.pku.edu.cn/netportal/shutdown"]];  
+    NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease]; 
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://its.pku.edu.cn:5428/ipgatewayofpku?uid=%@&password=%@&operation=disconnect&range=%d&timeout=3", username, password, 2]]];  
     [request setHTTPMethod:@"GET"]; 
-
+    [request setTimeoutInterval:15];
+    
     NSData *returnedData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     if (returnedData) {
-        NSString *content = [[[NSString alloc] initWithData:returnedData encoding:NSUTF8StringEncoding] autorelease];
+        NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        NSString *content = [[[NSString alloc] initWithData:returnedData encoding:enc] autorelease];
 #ifdef DEBUG
         NSLog(@"***************\n%@",content);
 #endif
-        NSRange range = [content rangeOfString:@"top.location.replace"];
+        NSRange range = [content rangeOfString:@"<!--IPGWCLIENT_START SUCCESS=YES"];
         if(range.length != 0) {
-            [messageTextView setText:@"logout success! - You are offline now."];
+            [messageTextView setText:NSLocalizedString(@"logout_success", @"logout success! - You are offline now.")];
             [logoutButton setEnabled:NO];
             if ([rememberSwitch isOn] == NO) {
                 [useridTextField setText:@""];
                 [passwordTextField setText:@""];
+                [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"rememberedUser"];
+                [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"rememberedPwd"];
             }
+        } else {
+            [messageTextView setText:NSLocalizedString(@"something_wrong", @"something wrong! - Sorry."])];
         }
     } else {
-        [messageTextView setText:@"somethin wrong! - Sorry."];
+        [messageTextView setText:NSLocalizedString(@"something_wrong", @"something wrong! - Sorry."])];
     }
 }
-
 
 
 #pragma mark - connection delegate
-
-- (void)connection:(NSURLConnection *)aConn didReceiveResponse:(NSURLResponse *)aResponse
-{
-    if(aConn == connection2) {
-        NSDictionary *headers = [(NSHTTPURLResponse*)aResponse allHeaderFields];
-        NSString *location = [headers valueForKey:@"Location"];
-        //NSLog(@"%@", [headers description]);
-        if (location) {
-            [messageTextView setText:location];
-        } else {
-            //[messageTextView setText:@"error"];
-        }
-    }
-}
-
 - (void)connection:(NSURLConnection *)aConn didReceiveData:(NSData *)data
 {
     if (aConn == connection1) {
@@ -207,210 +231,115 @@
 
 - (void)connection:(NSURLConnection *)aConn didFailWithError:(NSError *)error
 {
-    [messageTextView  setText:[NSString stringWithFormat:@"connection failed! - %@", [error localizedDescription]]];
+    [messageTextView  setText:[NSString stringWithFormat:@"%@ - %@",NSLocalizedString(@"connection_failed", @"connection failed!"), [error localizedDescription]]];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)aConn
 {
     if (aConn == connection1) {
-        NSString *lt = nil;
-        
-        NSString *content = [[[NSString alloc] initWithData:receivedData1 encoding:NSUTF8StringEncoding] autorelease];
-        NSLog(@"content of connection1: \n%@", content);
-        NSRange range = [content rangeOfString:@"<input type=\"hidden\" name=\"lt\" value=\""];
-        if(range.length != 0)
-            lt = [content substringWithRange:NSMakeRange(range.location + range.length, 36)];
-        //NSLog(@"lt:%@",lt);
-        
-        NSString *fwrd = @"free";
-        NSString *tail = @"12";
-        if ([globalSwitch isOn]) {
-            fwrd = @"fee";
-            tail = @"11";
+        NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        NSString *content = [[[NSString alloc] initWithData:receivedData1 encoding:enc] autorelease];
+        if (content == nil) {
+            content = [[NSString alloc] initWithData:receivedData1 encoding:NSUTF8StringEncoding];
         }
-        
-        NSString *postContent = [[NSString alloc] initWithFormat:@"username1=%@&password=%@&pwd_t=%%E5%%AF%%86%%E7%%A0%%81&fwrd=%@&lt=%@&_currentStateId=viewLoginForm&_eventId=submit&username=%@%%7C%%3BkiDrqvfi7d%%24v0p5Fg72Vwbv2%%3B%%7C%@%%7C%%3BkiDrqvfi7d%%24v0p5Fg72Vwbv2%%3B%%7C%@",username,password,fwrd,lt,username,password,tail];
-        //NSLog(@"postContent: %@", postContent);
-        NSData *postData = [postContent dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-        NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]]; 
-        
-        NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];  
-        [request setURL:[NSURL URLWithString:@"https://its.pku.edu.cn/cas/login?service=https%3A%2F%2Fits.pku.edu.cn%2Fnetportal%2F"]];  
-        [request setHTTPMethod:@"POST"]; 
-        [request setValue:@"its.pku.edu.cn" forHTTPHeaderField:@"Host"];
-        [request setValue:@"keep-alive" forHTTPHeaderField:@"Connection"];
-        [request setValue:@"https://its.pku.edu.cn/cas/login?service=https%3A%2F%2Fits.pku.edu.cn%2Fnetportal%2F" forHTTPHeaderField:@"Referer"];
-        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];  
-        
-        [request setHTTPBody:postData]; 
-        
-        // create the connection with the request
-        // and start loading the data
-        connection2 = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-        if (connection2) {
-            // Create the NSMutableData to hold the received data.
-            // receivedData is an instance variable declared elsewhere.
-            receivedData2 = [[NSMutableData data] retain];
-        } else {
-            // Inform the user that the connection failed.
-            [messageTextView setText:@"connection init failed!"];
-        }
-        [postContent release]; 
-
-    } 
-    else if (aConn == connection2) {
-        NSString *content = [[[NSString alloc] initWithData:receivedData2 encoding:NSUTF8StringEncoding] autorelease];
 #ifdef DEBUG
-        NSLog(@"***************\n%@",content);
+        NSLog(@"content: ***************\n%@",content);
 #endif
-        NSRange range = [content rangeOfString:@"【用户名】或【密码】错误！"];
-        if(range.length != 0) {
-            [messageTextView setText:@"login failed! - Username or password error, please check."];
+        NSRange range1 = [content rangeOfString:@"<!--IPGWCLIENT_START "];
+        NSRange range2 = [content rangeOfString:@"IPGWCLIENT_END-->"];
+        if(range1.length == 0 || range2.length == 0) {
+            [messageTextView setText:NSLocalizedString(@"no_info_returned", @"no information returned! - It is terrible.")];
             return ;
         }
-        
-        [logoutButton setEnabled:YES];
 
-        
-        NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease]; 
-        if ([globalSwitch isOn]) {
-            [request setURL:[NSURL URLWithString:@"https://its.pku.edu.cn/netportal/ipgwopenall"]];  
-        } else {
-            [request setURL:[NSURL URLWithString:@"https://its.pku.edu.cn/netportal/ipgwopen"]];  
-        }
-        
-        [request setHTTPMethod:@"GET"]; 
-        
-        connection3 = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-        if (connection3) {
-            // Create the NSMutableData to hold the received data.
-            // receivedData is an instance variable declared elsewhere.
-            receivedData3 = [[NSMutableData data] retain];
-        } else {
-            // Inform the user that the connection failed.
-            [messageTextView setText:@"connection init failed!"];
-        }
-    }
-    else if (aConn == connection3) {
-        NSString *content = [[[NSString alloc] initWithData:receivedData3 encoding:NSUTF8StringEncoding] autorelease];
+        NSString *information = [content substringWithRange:NSMakeRange(range1.location + range1.length, range2.location - (range1.location + range1.length))];
 #ifdef DEBUG
-        NSLog(@"**************\n%@",content);
+        NSLog(@"information: **************\n%@",information);
 #endif
-        if([content rangeOfString:@"网络连接成功"].length != 0){
-            
+        if([[information substringToIndex:11] isEqualToString:@"SUCCESS=YES"]){
             NSRange range = [content rangeOfString:@"用&nbsp;户&nbsp;名："];
             NSString *name = [content substringWithRange:NSMakeRange(range.location + range.length + 9, 12)];
             name = [name substringToIndex:[name rangeOfString:@"</td>"].location];
-            range = [content rangeOfString:@"当前地址："];
-            NSString *IP = [content substringWithRange:NSMakeRange(range.location + range.length + 9, 20)];
-            IP = [IP substringToIndex:[IP rangeOfString:@"</td>"].location];
-            range = [content rangeOfString:@"账户余额："];
-            NSString *balance = [content substringWithRange:NSMakeRange(range.location + range.length + 9, 5)];
-            if ([balance isEqualToString:@"<font"]) {
-                NSUInteger a = range.location;
-                range = [content rangeOfString:@"请及时加款"];
-                NSUInteger b = range.location;
-                NSString *s = [content substringWithRange:NSMakeRange(a, b-a)];
-                range = [s rangeOfString:@"元"];
-                balance = [s substringWithRange:NSMakeRange(range.location - 5, 5)];
-            }
+            NSString *IP = [self findItem:@"IP" ofInfomation:information];
+            NSString *balance = [self findItem:@"BALANCE" ofInfomation:information];
             balance = [balance stringByAppendingString:@" RMB"];
-            
-            [messageTextView setText:[NSString stringWithFormat:@"login success! - You are online now. \n\nUser Name: %@ \nIP Location: %@ \nAccount Balance: %@", name,IP,balance]];
+            [messageTextView setText:[NSString stringWithFormat:@"%@ \n\n%@: %@ \n%@: %@ \n%@: %@", NSLocalizedString(@"login_success", @"login success! - You are online now."), NSLocalizedString(@"user_name", @"User Name"),name, NSLocalizedString(@"ip_location", @"IP Location"), IP, NSLocalizedString(@"account_balance", @"Account Balance"), balance]];
             
             if ([rememberSwitch isOn]) {
                 [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"rememberedUser"];
                 [[NSUserDefaults standardUserDefaults] setValue:password forKey:@"rememberedPwd"];
             }
             [logoutButton setEnabled:YES];
-        } else if ([content rangeOfString:@"不能登录网关"].length != 0) {
-            [messageTextView setText:@"login failed! - Your IP address is not in the  proper area, can't login to the gateway."];
-        } else if ([content rangeOfString:@"达到设定的连接数"].length != 0) {
-            UIAlertView *alert = [[UIAlertView alloc] 
-                                  initWithTitle: @"Message" 
-                                  message:@"You have reached the max connection number. Disconnect all others and connect again?"
-                                  delegate:self
-                                  cancelButtonTitle:@"No"
-                                  otherButtonTitles:@"Yes", nil];
-            [alert show];
-            [alert release];
-        } else if ([content rangeOfString:@"您仅被授权访问免费地址"].length != 0) {
-            [messageTextView setText:@"login failed! - Your account is only limited to CERNET free IP. Please turn off Global Access or change your permission from http://its.pku.edu.cn."];
+        } else if([[information substringToIndex:10] isEqualToString:@"SUCCESS=NO"]){ 
+            NSRange range = [information rangeOfString:@"REASON="];
+            NSString *reason = [information substringFromIndex:(range.location + range.length)];
+            if ([reason rangeOfString:@"户名错"].length != 0 || [reason rangeOfString:@"口令错误"].length != 0) {
+                [messageTextView setText:NSLocalizedString(@"login_failed_user_error", @"login failed! - Username or password error, please check.")];
+            } else if ([reason rangeOfString:@"不能登录网关"].length != 0) {
+                NSRange range = [reason rangeOfString:@"是服务器"];
+                NSString *IP = @"";
+                if(range.length != 0) IP = [NSString stringWithFormat:@"<%@>",[reason substringToIndex:range.location]];
+                [messageTextView setText:[NSString stringWithFormat:NSLocalizedString(@"login_failed_ip_error", @"login failed! - Your IP address%@ is not in the proper area, can't login to the gateway.") ,IP]];
+
+            } else if ([reason rangeOfString:@"没有访问收费地址的权限"].length != 0) {
+                [messageTextView setText: NSLocalizedString(@"login_failed_scope_error", @"login failed! - Your account is only limited to CERNET free IP. Please turn off Global Access or change your settings from http://its.pku.edu.cn.")];
+            } else if ([reason rangeOfString:@"连接数超过"].length != 0) {
+                UIAlertView *alert = [[UIAlertView alloc] 
+                                      initWithTitle:NSLocalizedString(@"max_alert_title",@"Message") 
+                                      message:NSLocalizedString(@"max_alert_message",@"You have reached the max connection number. Disconnect all others and connect again?")
+                                      delegate:self
+                                      cancelButtonTitle:NSLocalizedString(@"max_alert_cancel",@"No")
+                                      otherButtonTitles:NSLocalizedString(@"max_alert_others1",@"Yes"), nil];
+                [alert show];
+                [alert release];
+            } else {
+                [messageTextView setText:NSLocalizedString(@"something_wrong", @"something wrong! - Sorry."])];
+            }
         } else {
-            [messageTextView setText:@"something wrong! - Sorry."];
+            [messageTextView setText:NSLocalizedString(@"something_wrong", @"something wrong! - Sorry."])];
         }
+
+    } 
+    else if (aConn == connection2) {
+        
+    }
+    else if (aConn == connection3) {
+        
     }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if(buttonIndex == 0){
-        [messageTextView setText:@"login failed! - Max connection number reached."];
+        [messageTextView setText:NSLocalizedString(@"login_failed_max_connections", @"login failed! - Max connection number reached.")];
         return;
     } else if(buttonIndex == 1) {
+        NSString *requestString = [NSString stringWithFormat:@"https://its.pku.edu.cn:5428/ipgatewayofpku?uid=%@&password=%@&operation=disconnectall&range=%d&timeout=3", username, password, 2];
+#ifdef DEBUG
+        NSLog(@"%@", requestString);
+#endif
         NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];  
-        [request setURL:[NSURL URLWithString:@"https://its.pku.edu.cn/netportal/ipgwcloseall"]];  
-        [request setHTTPMethod:@"GET"]; 
+        [request setURL:[NSURL URLWithString:requestString]];  
+        [request setHTTPMethod:@"GET"];
+        [request setTimeoutInterval:15];
         
         NSData *returnedData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
         if (returnedData) {
-            NSString *content = [[[NSString alloc] initWithData:returnedData encoding:NSUTF8StringEncoding] autorelease];
+            NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+            NSString *content = [[[NSString alloc] initWithData:returnedData encoding:enc] autorelease];
 #ifdef DEBUG
             NSLog(@"***************\n%@",content);
 #endif
-            NSRange range = [content rangeOfString:@"断开全部连接成功"];
+            NSRange range = [content rangeOfString:@"<!--IPGWCLIENT_START SUCCESS=YES"];
             if(range.length != 0) {
-                 [messageTextView setText:@"close other connections success! - re connectting..."];
-                if ([globalSwitch isOn]) {
-                    [request setURL:[NSURL URLWithString:@"https://its.pku.edu.cn/netportal/ipgwopenall"]];
-                } else {
-                    [request setURL:[NSURL URLWithString:@"https://its.pku.edu.cn/netportal/ipgwopen"]];
-                }
-                
-                returnedData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-                content = [[[NSString alloc] initWithData:returnedData encoding:NSUTF8StringEncoding] autorelease];
-#ifdef DEBUG
-                NSLog(@"***************\n%@",content);
-#endif    
-                range = [content rangeOfString:@"网络连接成功"];
-                if(range.length != 0) {
-                    NSRange range = [content rangeOfString:@"用&nbsp;户&nbsp;名："];
-                    NSString *name = [content substringWithRange:NSMakeRange(range.location + range.length + 9, 12)];
-                    name = [name substringToIndex:[name rangeOfString:@"</td>"].location];
-                    range = [content rangeOfString:@"当前地址："];
-                    NSString *IP = [content substringWithRange:NSMakeRange(range.location + range.length + 9, 20)];
-                    IP = [IP substringToIndex:[IP rangeOfString:@"</td>"].location];
-                    range = [content rangeOfString:@"账户余额："];
-                    NSString *balance = [content substringWithRange:NSMakeRange(range.location + range.length + 9, 5)];
-                    if ([balance isEqualToString:@"<font"]) {
-                        NSUInteger a = range.location;
-                        range = [content rangeOfString:@"请及时加款"];
-                        NSUInteger b = range.location;
-                        NSString *s = [content substringWithRange:NSMakeRange(a, b-a)];
-                        range = [s rangeOfString:@"元"];
-                        balance = [s substringWithRange:NSMakeRange(range.location - 5, 5)];
-                    }
-                    balance = [balance stringByAppendingString:@" RMB"];
-                    
-                    [messageTextView setText:[NSString stringWithFormat:@"login success! - You are online now. \n\nUser Name: %@ \nIP Location: %@ \nAccount Balance: %@", name,IP,balance]];                    
-                    
-                    if ([rememberSwitch isOn]) {
-                        [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"rememberedUser"];
-                        [[NSUserDefaults standardUserDefaults] setValue:password forKey:@"rememberedPwd"];
-                    [logoutButton setEnabled:YES];
-                    }
-                } else if ([content rangeOfString:@"您仅被授权访问免费地址"].length != 0) {
-                    [messageTextView setText:@"login failed! - You account is limited to CERNET free IP. Please turn off Global Access or change your permission from http://its.pku.edu.cn."];
-                } else {
-                    [messageTextView setText:@"something wrong! - Sorry."];
-                }
-
+                 [messageTextView setText:NSLocalizedString(@"close_others_success", @"close other connections success! - re connectting...")];
+                sleep(1);
+                [self loginButtonPressed:nil];
             } else {
-                [messageTextView setText:@"close other connections failed! - Sorry."];
+                [messageTextView setText:NSLocalizedString(@"close_others_failed", @"close other connections failed! - Sorry.")];
             }
         } else {
-            [messageTextView setText:@"close other connections failed! - Sorry."];
+            [messageTextView setText:NSLocalizedString(@"close_others_failed", @"close other connections failed! - Sorry.")];
         }
     }
 
@@ -422,20 +351,21 @@
 - (IBAction) aboutItemPressed :(id)sender
 {
     UIAlertView *alert = [[UIAlertView alloc] 
-                          initWithTitle: @"About IPGateway" 
-                          message:@"This is a free app for logging into the IP gateway of PKU. Suggestions and bug reports can be sent to: shengbinmeng@gmail.com."
+                          initWithTitle:NSLocalizedString(@"about_alert_title", @"About IPGateway") 
+                          message:NSLocalizedString(@"about_alert_message", @"This is a free app for logging into the IP gateway of PKU. Suggestions and bug reports can be sent to: shengbinmeng@gmail.com.")
                           delegate:nil
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil];
+                          cancelButtonTitle:nil
+                          otherButtonTitles:NSLocalizedString(@"about_alert_others1",@"OK"), nil];
     [alert show];
     [alert release];
 }
 
 - (IBAction) setttingsItemPressed :(id)sender
 {
-    SettingsViewController *svc = [[[SettingsViewController alloc] init] autorelease];
+    SettingsViewController *svc = [[[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil] autorelease];
     svc.backViewController = self.view.window.rootViewController;
     self.view.window.rootViewController = svc;
+    firstAppear = NO;
 }
 
 @end

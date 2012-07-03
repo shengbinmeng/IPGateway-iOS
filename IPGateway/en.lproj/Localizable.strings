@@ -1,0 +1,121 @@
+/* 
+  Localizable.strings
+  IPGateway
+
+  Created by Meng Shengbin on 3/24/12.
+  Copyright (c) 2012 Peking University. All rights reserved.
+*/
+
+/* This is a free app for logging into the IP gateway of PKU. Suggestions and bug reports can be sent to: shengbinmeng@gmail.com. */
+"about_alert_message" = "This is a free app for logging into the IP gateway of PKU. Suggestions and bug reports can be sent to: shengbinmeng@gmail.com.";
+
+/* OK */
+"about_alert_others1" = "OK";
+
+/* About IPGateway */
+"about_alert_title" = "About IPGateway";
+
+/* Account Balance */
+"account_balance" = "Account Balance";
+
+/* Auto Login */
+"auto_login" = "Auto Login";
+
+/* automatically try to login when the app became active */
+"auto_login_explain" = "automatically try to login when the app became active";
+
+/* close other connections failed! - Sorry. */
+"close_others_failed" = "close other connections failed! - Sorry.";
+
+/* close other connections success! - re connectting... */
+"close_others_success" = "close other connections success! - re connectting...";
+
+/* connection failed! */
+"connection_failed" = "connection failed!";
+
+/* connection init failed! It's terrible. */
+"connection_init_failed" = "connection init failed! It's terrible.";
+
+/* Well */
+"egg1_alert_cancel" = "Well";
+
+/* For Linger. I hope she doesn't really leave. Still love her. */
+"egg1_alert_message" = "For Linger. I hope she doesn't really leave. Still love her.";
+
+/* Bless */
+"egg1_alert_others1" = "Bless";
+
+/* Egg #1 */
+"egg1_alert_title" = "Egg #1";
+
+/* Go to Website */
+"goto_website" = "Go to Website";
+
+/* IP Location */
+"ip_location" = "IP Location";
+
+/* logging in ... */
+"logging_in" = "logging in ...";
+
+/* logging out ... */
+"logging_out" = "logging out ...";
+
+/* login failed! - Your IP address%@ is not in the proper area, can't login to the gateway. */
+"login_failed_ip_error" = "login failed! - Your IP address%@ is not in the proper area, can't login to the gateway.";
+
+/* login failed! - Max connection number reached. */
+"login_failed_max_connections" = "login failed! - Max connection number reached.";
+
+/* login failed! - Your account is only limited to CERNET free IP. Please turn off Global Access or change your settings from http://its.pku.edu.cn. */
+"login_failed_scope_error" = "login failed! - Your account is only limited to CERNET free IP. Please turn off Global Access or change your settings from http://its.pku.edu.cn.";
+
+/* login failed! - Username or password error, please check. */
+"login_failed_user_error" = "login failed! - Username or password error, please check.";
+
+/* login success! - You are online now. */
+"login_success" = "login success! - You are online now.";
+
+/* logout success! - You are offline now. */
+"logout_success" = "logout success! - You are offline now.";
+
+/* No */
+"max_alert_cancel" = "No";
+
+/* You have reached the max connection number. Disconnect all others and connect again? */
+"max_alert_message" = "You have reached the max connection number. Disconnect all others and connect again?";
+
+/* Yes */
+"max_alert_others1" = "Yes";
+
+/* Message */
+"max_alert_title" = "Message";
+
+/* More */
+"more" = "More";
+
+/* no information returned! - It is terrible. */
+"no_info_returned" = "no information returned! - It is terrible.";
+
+/* password required! - Please input. */
+"no_password" = "password required! - Please input.";
+
+/* user ID required! - Please input. */
+"no_username" = "user ID required! - Please input.";
+
+/* Of course I will */
+"reminder_alert_cancel" = "Of course I will";
+
+/* Global access may need extra cost, please remember to logout when finish using. */
+"reminder_alert_message" = "Global access may need extra cost, please remember to logout when finish using. ";
+
+/* Reminder */
+"reminder_alert_title" = "Reminder";
+
+/* Remind Me */
+"remind_me" = "Remind Me";
+
+/* something wrong! - Sorry. */
+"something_wrong" = "something wrong! - Sorry.";
+
+/* User Name */
+"user_name" = "User Name";

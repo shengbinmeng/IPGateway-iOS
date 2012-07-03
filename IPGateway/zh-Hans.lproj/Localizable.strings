@@ -1,0 +1,121 @@
+/* 
+  Localizable.strings
+  IPGateway
+
+  Created by Meng Shengbin on 3/24/12.
+  Copyright (c) 2012 Peking University. All rights reserved.
+*/
+
+/* This is a free app for logging into the IP gateway of PKU. Suggestions and bug reports can be sent to: shengbinmeng@gmail.com. */
+"about_alert_message" = "IPGateway是一个用于登录北大IP网关的iOS应用。有任何建议或问题可发信至: shengbinmeng@gmail.com.";
+
+/* OK */
+"about_alert_others1" = "确定";
+
+/* About IPGateway */
+"about_alert_title" = "关于 IPGateway";
+
+/* Account Balance */
+"account_balance" = "账户余额";
+
+/* Auto Login */
+"auto_login" = "自动登录";
+
+/* automatically try to login when the app became active */
+"auto_login_explain" = "当程序启动或激活（进入前台）时自动登录";
+
+/* close other connections failed! - Sorry. */
+"close_others_failed" = "断开其他连接失败";
+
+/* close other connections success! - re connectting... */
+"close_others_success" = "断开其他连接成功! - 正在重新连接...";
+
+/* connection failed! */
+"connection_failed" = "网络连接错误";
+
+/* connection init failed! It's terrible. */
+"connection_init_failed" = "建立网络连接出错";
+
+/* Well */
+"egg1_alert_cancel" = "嗯";
+
+/* For Linger. I hope she doesn't really leave. Still love her. */
+"egg1_alert_message" = "送给玲儿。希望她没有离开我。";
+
+/* Bless */
+"egg1_alert_others1" = "希望如此";
+
+/* Egg #1 */
+"egg1_alert_title" = "彩蛋 #1";
+
+/* Go to Website */
+"goto_website" = "访问网站";
+
+/* IP Location */
+"ip_location" = "IP地址";
+
+/* logging in ... */
+"logging_in" = "正在登录 ...";
+
+/* logging out ... */
+"logging_out" = "正在退出 ...";
+
+/* login failed! - Your IP address%@ is not in the proper area, can't login to the gateway. */
+"login_failed_ip_error" = "登录失败! - 当前IP地址%@不能或无需登录网关";
+
+/* login failed! - Max connection number reached. */
+"login_failed_max_connections" = "登录失败! - 达到最大连接数.";
+
+/* login failed! - Your account is only limited to CERNET free IP. Please turn off Global Access or change your settings from http://its.pku.edu.cn. */
+"login_failed_scope_error" = "登录失败！- 该账户未开通收费地址。请到http://its.pku.edu.cn进行设置。";
+
+/* login failed! - Username or password error, please check. */
+"login_failed_user_error" = "登录失败！ - 用户名或密码错误";
+
+/* login success! - You are online now. */
+"login_success" = "登录成功！ - 已经连接网关";
+
+/* logout success! - You are offline now. */
+"logout_success" = "退出成功！ - 已经断开网关";
+
+/* No */
+"max_alert_cancel" = "否";
+
+/* You have reached the max connection number. Disconnect all others and connect again? */
+"max_alert_message" = "该账户达到了最大连接数。是否断开其他连接并重连？";
+
+/* Yes */
+"max_alert_others1" = "是";
+
+/* Message */
+"max_alert_title" = "提示";
+
+/* More */
+"more" = "更多";
+
+/* no information returned! - It is terrible. */
+"no_info_returned" = "服务器未返回有效信息";
+
+/* password required! - Please input. */
+"no_password" = "密码不能为空！ - 请输入";
+
+/* user ID required! - Please input. */
+"no_username" = "用户名不能为空！ - 请输入";
+
+/* Of course I will */
+"reminder_alert_cancel" = "我会的";
+
+/* Global access may need extra cost, please remember to logout when finish using. */
+"reminder_alert_message" = "为避免不必要的收费，请记得及时断开连接";
+
+/* Reminder */
+"reminder_alert_title" = "提醒";
+
+/* Remind Me */
+"remind_me" = "提醒设置";
+
+/* something wrong! - Sorry. */
+"something_wrong" = "出错了 - 抱歉";
+
+/* User Name */
+"user_name" = "用户名";
