@@ -1,0 +1,342 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E87C91C414ED0ABD00E7198E /* ipgw_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = E87C91C314ED0ABD00E7198E /* ipgw_57x57.png */; };
+		E87C91C614ED0AC500E7198E /* ipgw_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = E87C91C514ED0AC500E7198E /* ipgw_114x114.png */; };
+		E87C91C814ED0AD400E7198E /* ipgw_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = E87C91C714ED0AD400E7198E /* ipgw_72x72.png */; };
+		E89B316B14D8E15900B00A6E /* ToggleSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E89B316A14D8E15900B00A6E /* ToggleSwitchCell.xib */; };
+		E8ADCF0114B5682000889AAA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8ADCF0014B5682000889AAA /* UIKit.framework */; };
+		E8ADCF0314B5682000889AAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8ADCF0214B5682000889AAA /* Foundation.framework */; };
+		E8ADCF0514B5682000889AAA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8ADCF0414B5682000889AAA /* CoreGraphics.framework */; };
+		E8ADCF0B14B5682000889AAA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E8ADCF0914B5682000889AAA /* InfoPlist.strings */; };
+		E8ADCF0D14B5682000889AAA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E8ADCF0C14B5682000889AAA /* main.m */; };
+		E8ADCF1114B5682000889AAA /* IPGWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8ADCF1014B5682000889AAA /* IPGWAppDelegate.m */; };
+		E8ADCF1414B5682000889AAA /* IPGWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8ADCF1314B5682000889AAA /* IPGWViewController.m */; };
+		E8ADCF1714B5682000889AAA /* IPGWViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8ADCF1514B5682000889AAA /* IPGWViewController_iPhone.xib */; };
+		E8ADCF1A14B5682000889AAA /* IPGWViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8ADCF1814B5682000889AAA /* IPGWViewController_iPad.xib */; };
+		E8B5624E14D8CAF700E41B86 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B5624C14D8CAF700E41B86 /* SettingsViewController.m */; };
+		E8B5624F14D8CAF700E41B86 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8B5624D14D8CAF700E41B86 /* SettingsViewController.xib */; };
+		E8E09BBB14D8E26D00291900 /* ToggleSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E09BBA14D8E26D00291900 /* ToggleSwitchCell.m */; };
+		E8FB815114B8161B00F6178C /* noname-lake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E8FB815014B8161B00F6178C /* noname-lake.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E87C91C314ED0ABD00E7198E /* ipgw_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ipgw_57x57.png; path = ../ipgw_57x57.png; sourceTree = "<group>"; };
+		E87C91C514ED0AC500E7198E /* ipgw_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ipgw_114x114.png; path = ../ipgw_114x114.png; sourceTree = "<group>"; };
+		E87C91C714ED0AD400E7198E /* ipgw_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ipgw_72x72.png; path = ../ipgw_72x72.png; sourceTree = "<group>"; };
+		E89B316A14D8E15900B00A6E /* ToggleSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToggleSwitchCell.xib; sourceTree = "<group>"; };
+		E8ADCEFC14B5682000889AAA /* IPGateway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IPGateway.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8ADCF0014B5682000889AAA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E8ADCF0214B5682000889AAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E8ADCF0414B5682000889AAA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E8ADCF0814B5682000889AAA /* IPGateway-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IPGateway-Info.plist"; sourceTree = "<group>"; };
+		E8ADCF0A14B5682000889AAA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E8ADCF0C14B5682000889AAA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E8ADCF0E14B5682000889AAA /* IPGateway-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IPGateway-Prefix.pch"; sourceTree = "<group>"; };
+		E8ADCF0F14B5682000889AAA /* IPGWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPGWAppDelegate.h; sourceTree = "<group>"; };
+		E8ADCF1014B5682000889AAA /* IPGWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPGWAppDelegate.m; sourceTree = "<group>"; };
+		E8ADCF1214B5682000889AAA /* IPGWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPGWViewController.h; sourceTree = "<group>"; };
+		E8ADCF1314B5682000889AAA /* IPGWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPGWViewController.m; sourceTree = "<group>"; };
+		E8ADCF1614B5682000889AAA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/IPGWViewController_iPhone.xib; sourceTree = "<group>"; };
+		E8ADCF1914B5682000889AAA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/IPGWViewController_iPad.xib; sourceTree = "<group>"; };
+		E8B5624B14D8CAF700E41B86 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		E8B5624C14D8CAF700E41B86 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		E8B5624D14D8CAF700E41B86 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		E8E09BB914D8E26D00291900 /* ToggleSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToggleSwitchCell.h; sourceTree = "<group>"; };
+		E8E09BBA14D8E26D00291900 /* ToggleSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToggleSwitchCell.m; sourceTree = "<group>"; };
+		E8FB815014B8161B00F6178C /* noname-lake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "noname-lake.jpg"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E8ADCEF914B5682000889AAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8ADCF0114B5682000889AAA /* UIKit.framework in Frameworks */,
+				E8ADCF0314B5682000889AAA /* Foundation.framework in Frameworks */,
+				E8ADCF0514B5682000889AAA /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E8ADCEF114B5681F00889AAA = {
+			isa = PBXGroup;
+			children = (
+				E8ADCF0614B5682000889AAA /* IPGateway */,
+				E8ADCEFF14B5682000889AAA /* Frameworks */,
+				E8ADCEFD14B5682000889AAA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E8ADCEFD14B5682000889AAA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E8ADCEFC14B5682000889AAA /* IPGateway.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E8ADCEFF14B5682000889AAA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E8ADCF0014B5682000889AAA /* UIKit.framework */,
+				E8ADCF0214B5682000889AAA /* Foundation.framework */,
+				E8ADCF0414B5682000889AAA /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E8ADCF0614B5682000889AAA /* IPGateway */ = {
+			isa = PBXGroup;
+			children = (
+				E89B316A14D8E15900B00A6E /* ToggleSwitchCell.xib */,
+				E8E09BB914D8E26D00291900 /* ToggleSwitchCell.h */,
+				E8E09BBA14D8E26D00291900 /* ToggleSwitchCell.m */,
+				E8ADCF0F14B5682000889AAA /* IPGWAppDelegate.h */,
+				E8ADCF1014B5682000889AAA /* IPGWAppDelegate.m */,
+				E8B5624B14D8CAF700E41B86 /* SettingsViewController.h */,
+				E8B5624C14D8CAF700E41B86 /* SettingsViewController.m */,
+				E8B5624D14D8CAF700E41B86 /* SettingsViewController.xib */,
+				E8ADCF1214B5682000889AAA /* IPGWViewController.h */,
+				E8ADCF1314B5682000889AAA /* IPGWViewController.m */,
+				E8ADCF1514B5682000889AAA /* IPGWViewController_iPhone.xib */,
+				E8ADCF1814B5682000889AAA /* IPGWViewController_iPad.xib */,
+				E8ADCF0714B5682000889AAA /* Supporting Files */,
+			);
+			path = IPGateway;
+			sourceTree = "<group>";
+		};
+		E8ADCF0714B5682000889AAA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E87C91C714ED0AD400E7198E /* ipgw_72x72.png */,
+				E87C91C514ED0AC500E7198E /* ipgw_114x114.png */,
+				E87C91C314ED0ABD00E7198E /* ipgw_57x57.png */,
+				E8FB815014B8161B00F6178C /* noname-lake.jpg */,
+				E8ADCF0814B5682000889AAA /* IPGateway-Info.plist */,
+				E8ADCF0914B5682000889AAA /* InfoPlist.strings */,
+				E8ADCF0C14B5682000889AAA /* main.m */,
+				E8ADCF0E14B5682000889AAA /* IPGateway-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E8ADCEFB14B5682000889AAA /* IPGateway */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8ADCF1D14B5682000889AAA /* Build configuration list for PBXNativeTarget "IPGateway" */;
+			buildPhases = (
+				E8ADCEF814B5682000889AAA /* Sources */,
+				E8ADCEF914B5682000889AAA /* Frameworks */,
+				E8ADCEFA14B5682000889AAA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IPGateway;
+			productName = IPGateway;
+			productReference = E8ADCEFC14B5682000889AAA /* IPGateway.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E8ADCEF314B5681F00889AAA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Peking University";
+			};
+			buildConfigurationList = E8ADCEF614B5681F00889AAA /* Build configuration list for PBXProject "IPGateway" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E8ADCEF114B5681F00889AAA;
+			productRefGroup = E8ADCEFD14B5682000889AAA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E8ADCEFB14B5682000889AAA /* IPGateway */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E8ADCEFA14B5682000889AAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8ADCF0B14B5682000889AAA /* InfoPlist.strings in Resources */,
+				E8ADCF1714B5682000889AAA /* IPGWViewController_iPhone.xib in Resources */,
+				E8ADCF1A14B5682000889AAA /* IPGWViewController_iPad.xib in Resources */,
+				E8FB815114B8161B00F6178C /* noname-lake.jpg in Resources */,
+				E8B5624F14D8CAF700E41B86 /* SettingsViewController.xib in Resources */,
+				E89B316B14D8E15900B00A6E /* ToggleSwitchCell.xib in Resources */,
+				E87C91C414ED0ABD00E7198E /* ipgw_57x57.png in Resources */,
+				E87C91C614ED0AC500E7198E /* ipgw_114x114.png in Resources */,
+				E87C91C814ED0AD400E7198E /* ipgw_72x72.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E8ADCEF814B5682000889AAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8ADCF0D14B5682000889AAA /* main.m in Sources */,
+				E8ADCF1114B5682000889AAA /* IPGWAppDelegate.m in Sources */,
+				E8ADCF1414B5682000889AAA /* IPGWViewController.m in Sources */,
+				E8B5624E14D8CAF700E41B86 /* SettingsViewController.m in Sources */,
+				E8E09BBB14D8E26D00291900 /* ToggleSwitchCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E8ADCF0914B5682000889AAA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E8ADCF0A14B5682000889AAA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E8ADCF1514B5682000889AAA /* IPGWViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E8ADCF1614B5682000889AAA /* en */,
+			);
+			name = IPGWViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		E8ADCF1814B5682000889AAA /* IPGWViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E8ADCF1914B5682000889AAA /* en */,
+			);
+			name = IPGWViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E8ADCF1B14B5682000889AAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos4.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E8ADCF1C14B5682000889AAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jun Sun";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "CC8A6E69-2818-451B-AA8B-C8C7931D7EF4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos4.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E8ADCF1E14B5682000889AAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IPGateway/IPGateway-Prefix.pch";
+				INFOPLIST_FILE = "IPGateway/IPGateway-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E8ADCF1F14B5682000889AAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IPGateway/IPGateway-Prefix.pch";
+				INFOPLIST_FILE = "IPGateway/IPGateway-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E8ADCEF614B5681F00889AAA /* Build configuration list for PBXProject "IPGateway" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8ADCF1B14B5682000889AAA /* Debug */,
+				E8ADCF1C14B5682000889AAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8ADCF1D14B5682000889AAA /* Build configuration list for PBXNativeTarget "IPGateway" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8ADCF1E14B5682000889AAA /* Debug */,
+				E8ADCF1F14B5682000889AAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E8ADCEF314B5681F00889AAA /* Project object */;
+}
