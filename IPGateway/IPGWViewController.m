@@ -119,6 +119,17 @@
     }
 }
 
+- (IBAction)logoutButtonDragOut:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle: NSLocalizedString(@"egg1_alert_message",@"Egg #1")
+                          message:NSLocalizedString(@"egg1_alert_message",@"For Her. I hope she doesn't really leave.")
+                          delegate:nil
+                          cancelButtonTitle:NSLocalizedString(@"egg1_alert_cancel", @"Well")
+                          otherButtonTitles:NSLocalizedString(@"egg1_alert_others1", @"Bless"), nil];
+    [alert show];
+    [alert release];
+}
+
 /*
  https://its.pku.edu.cn:5428/ipgatewayofpku?uid=1101111141&password=pas&operation=connect&range=2&timeout=2
  
@@ -215,6 +226,8 @@
         [messageTextView setText:NSLocalizedString(@"something_wrong", @"something wrong! - Sorry."])];
     }
 }
+
+
 
 
 #pragma mark - connection delegate

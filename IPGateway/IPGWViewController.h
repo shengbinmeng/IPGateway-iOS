@@ -20,6 +20,7 @@
 - (IBAction) loginButtonPressed :(id)sender;
 - (IBAction) logoutButtonPressed :(id)sender;
 - (IBAction) switchValueChanged :(id)sender;
+- (IBAction) logoutButtonDragOut:(id)sender;
 
 - (IBAction) setttingsItemPressed :(id)sender;
 - (IBAction) aboutItemPressed :(id)sender;
