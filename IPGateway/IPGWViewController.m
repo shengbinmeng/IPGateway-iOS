@@ -14,10 +14,6 @@
     NSString *password;
     NSMutableData* receivedData1;
     NSURLConnection * connection1;
-    NSMutableData* receivedData2;
-    NSURLConnection * connection2;
-    NSMutableData* receivedData3;
-    NSURLConnection * connection3;
     BOOL firstAppear;
 }
 
@@ -121,7 +117,7 @@
 
 - (IBAction)logoutButtonDragOut:(id)sender {
     UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle: NSLocalizedString(@"egg1_alert_message",@"Egg #1")
+                          initWithTitle: NSLocalizedString(@"egg1_alert_title",@"Egg #1")
                           message:NSLocalizedString(@"egg1_alert_message",@"For Her. I hope she doesn't really leave.")
                           delegate:nil
                           cancelButtonTitle:NSLocalizedString(@"egg1_alert_cancel", @"Well")
@@ -235,10 +231,6 @@
 {
     if (aConn == connection1) {
         [receivedData1 appendData:data];
-    } else if (aConn == connection2) {
-        [receivedData2 appendData:data];
-    } else if (aConn == connection3) {
-        [receivedData3 appendData:data];
     }
 }
 
@@ -312,12 +304,6 @@
             [messageTextView setText:NSLocalizedString(@"something_wrong", @"something wrong! - Sorry."])];
         }
 
-    } 
-    else if (aConn == connection2) {
-        
-    }
-    else if (aConn == connection3) {
-        
     }
 }
 
