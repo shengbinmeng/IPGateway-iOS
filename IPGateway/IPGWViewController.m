@@ -285,7 +285,6 @@
                 NSString *IP = @"";
                 if(range.length != 0) IP = [NSString stringWithFormat:@"<%@>",[reason substringToIndex:range.location]];
                 [messageTextView setText:[NSString stringWithFormat:NSLocalizedString(@"login_failed_ip_error", @"login failed! - Your IP address%@ is not in the proper area, can't login to the gateway.") ,IP]];
-
             } else if ([reason rangeOfString:@"没有访问收费地址的权限"].length != 0) {
                 [messageTextView setText: NSLocalizedString(@"login_failed_scope_error", @"login failed! - Your account is only limited to CERNET free IP. Please turn off Global Access or change your settings from http://its.pku.edu.cn.")];
             } else if ([reason rangeOfString:@"连接数超过"].length != 0) {

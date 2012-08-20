@@ -40,7 +40,7 @@
 "egg1_alert_cancel" = "嗯";
 
 /* For Linger. I hope she doesn't really leave. Still love her. */
-"egg1_alert_message" = "送给她。希望她没有离开。";
+"egg1_alert_message" = "希望她没有离开";
 
 /* Bless */
 "egg1_alert_others1" = "希望如此";
