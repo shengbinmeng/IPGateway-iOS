@@ -10,10 +10,8 @@
 #import "SettingsViewController.h"
 
 @implementation IPGWViewController {
-    NSString *username;
-    NSString *password;
-    NSMutableData* receivedData1;
-    NSURLConnection * connection1;
+    NSMutableData *receivedData1;
+    NSURLConnection *connection1;
     BOOL firstAppear;
 }
 
@@ -139,16 +137,11 @@
     [useridTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
     [messageTextView setText:NSLocalizedString(@"logging_in", @"logging in ...")];
-    
-    username = [[self useridTextField] text];
-    password = [[self passwordTextField] text];
-    if (username == nil) username = @"";
-    if (password == nil) password = @"";
 
     NSString *errorMessage = nil;
-    if ([username isEqualToString:@""]) {
+    if ([[[self useridTextField] text] isEqualToString:@""]) {
         errorMessage = NSLocalizedString(@"no_username", @"user ID required! - Please input.");
-    } else if ([password isEqualToString:@""]) {
+    } else if ([[[self passwordTextField] text] isEqualToString:@""]) {
         errorMessage = NSLocalizedString(@"no_password", @"password required! - Please input.");
     }
     
@@ -159,7 +152,7 @@
     
     if ([logoutButton isEnabled]) {
         NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease]; 
-        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://its.pku.edu.cn:5428/ipgatewayofpku?uid=%@&password=%@&operation=disconnect&range=%d&timeout=3", username, password, 2]]];  
+        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://its.pku.edu.cn:5428/ipgatewayofpku?uid=%@&password=%@&operation=disconnect&range=%d&timeout=3", [[self useridTextField] text], [[self passwordTextField] text], 2]]];  
         [request setHTTPMethod:@"GET"];
         [request setTimeoutInterval:15];
         [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
@@ -169,7 +162,7 @@
     if ([globalSwitch isOn]) {
         range = 1; //1 for fee; can't be others
     }
-    NSString *requestString = [NSString stringWithFormat:@"https://its.pku.edu.cn:5428/ipgatewayofpku?uid=%@&password=%@&operation=connect&range=%d&timeout=3", username, password, range];
+    NSString *requestString = [NSString stringWithFormat:@"https://its.pku.edu.cn:5428/ipgatewayofpku?uid=%@&password=%@&operation=connect&range=%d&timeout=3", [[self useridTextField] text], [[self passwordTextField] text], range];
 #ifdef DEBUG
     NSLog(@"%@", requestString);
 #endif
@@ -194,7 +187,7 @@
     [messageTextView setText:NSLocalizedString(@"logging_out", @"logging out ...")];
 
     NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease]; 
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://its.pku.edu.cn:5428/ipgatewayofpku?uid=%@&password=%@&operation=disconnect&range=%d&timeout=3", username, password, 2]]];  
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://its.pku.edu.cn:5428/ipgatewayofpku?uid=%@&password=%@&operation=disconnect&range=%d&timeout=3", [[self useridTextField] text], [[self passwordTextField] text], 2]]];  
     [request setHTTPMethod:@"GET"]; 
     [request setTimeoutInterval:15];
     
@@ -271,8 +264,8 @@
             [messageTextView setText:[NSString stringWithFormat:@"%@ \n\n%@: %@ \n%@: %@ \n%@: %@", NSLocalizedString(@"login_success", @"login success! - You are online now."), NSLocalizedString(@"user_name", @"User Name"),name, NSLocalizedString(@"ip_location", @"IP Location"), IP, NSLocalizedString(@"account_balance", @"Account Balance"), balance]];
             
             if ([rememberSwitch isOn]) {
-                [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"rememberedUser"];
-                [[NSUserDefaults standardUserDefaults] setValue:password forKey:@"rememberedPwd"];
+                [[NSUserDefaults standardUserDefaults] setValue:[[self useridTextField] text] forKey:@"rememberedUser"];
+                [[NSUserDefaults standardUserDefaults] setValue:[[self passwordTextField] text] forKey:@"rememberedPwd"];
             }
             [logoutButton setEnabled:YES];
         } else if([[information substringToIndex:10] isEqualToString:@"SUCCESS=NO"]){ 
@@ -312,7 +305,7 @@
         [messageTextView setText:NSLocalizedString(@"login_failed_max_connections", @"login failed! - Max connection number reached.")];
         return;
     } else if(buttonIndex == 1) {
-        NSString *requestString = [NSString stringWithFormat:@"https://its.pku.edu.cn:5428/ipgatewayofpku?uid=%@&password=%@&operation=disconnectall&range=%d&timeout=3", username, password, 2];
+        NSString *requestString = [NSString stringWithFormat:@"https://its.pku.edu.cn:5428/ipgatewayofpku?uid=%@&password=%@&operation=disconnectall&range=%d&timeout=3", [[self useridTextField] text], [[self passwordTextField] text], 2];
 #ifdef DEBUG
         NSLog(@"%@", requestString);
 #endif

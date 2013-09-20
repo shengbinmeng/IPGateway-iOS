@@ -90,7 +90,6 @@
                     <rect key="frame" x="231.00000000000006" y="363" width="133" height="49"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="连接">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="disabled">
@@ -104,7 +103,6 @@
                     <rect key="frame" x="408.00000000000006" y="363" width="129.00000000000003" height="49"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="断开">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="disabled">

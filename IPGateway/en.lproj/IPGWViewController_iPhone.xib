@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User ID" minimumFontSize="17" clearButtonMode="whileEditing" id="9">
-                    <rect key="frame" x="43" y="85" width="234" height="31"/>
+                    <rect key="frame" x="43" y="86" width="234" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -41,10 +41,9 @@
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="13">
-                    <rect key="frame" x="43" y="236" width="97" height="31"/>
+                    <rect key="frame" x="43" y="244" width="100" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Let Me In">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="disabled">
@@ -69,10 +68,9 @@
                     </connections>
                 </switch>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="28">
-                    <rect key="frame" x="171" y="237" width="106" height="30"/>
+                    <rect key="frame" x="177" y="244" width="100" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Log Out">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="disabled">
