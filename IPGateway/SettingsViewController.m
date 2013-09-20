@@ -86,6 +86,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (section == SECTION_NUM - 1) {
+        return 2;
+    }
     return 1;
 }
 
@@ -101,6 +104,11 @@
             [cell.textLabel setText:NSLocalizedString(@"goto_website", @"Go to Website")];
             [cell.textLabel setFont:[UIFont systemFontOfSize:17.0]];
             [cell.detailTextLabel setText:@"http://its.pku.edu.cn"];
+        }
+        if ([indexPath row] == 1) {
+            [cell.textLabel setText:NSLocalizedString(@"support_developer", @"Useful Apps")];
+            [cell.textLabel setFont:[UIFont systemFontOfSize:17.0]];
+            [cell.detailTextLabel setText:@"shengbin.me"];
         }
         return cell;
     }
@@ -152,8 +160,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath section] == SECTION_NUM - 1) {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        [[UIApplication sharedApplication] openURL:[[[NSURL alloc] initWithString:@"http://its.pku.edu.cn"] autorelease]];
+        if ([indexPath row] == 0) {
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            [[UIApplication sharedApplication] openURL:[[[NSURL alloc] initWithString:@"http://its.pku.edu.cn"] autorelease]];
+        }
+        if ([indexPath row] == 1) {
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            [[UIApplication sharedApplication] openURL:[[[NSURL alloc] initWithString:@"http://www.shengbin.me/apps/ipgateway"] autorelease]];
+        }
     }
 }
 

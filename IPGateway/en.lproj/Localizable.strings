@@ -51,6 +51,9 @@
 /* Go to Website */
 "goto_website" = "Go to Website";
 
+/* Support Developer*/
+"support_developer" = "Support Developer";
+
 /* IP Location */
 "ip_location" = "IP Location";
 

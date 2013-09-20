@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C2A0DC817EC7340007C3997 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C2A0DC717EC7340007C3997 /* Default-568h@2x.png */; };
+		6C2A0DD217EC74BB007C3997 /* ipgw_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C2A0DCB17EC74BB007C3997 /* ipgw_57x57.png */; };
+		6C2A0DD317EC74BB007C3997 /* ipgw_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C2A0DCC17EC74BB007C3997 /* ipgw_72x72.png */; };
+		6C2A0DD417EC74BB007C3997 /* ipgw_76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C2A0DCD17EC74BB007C3997 /* ipgw_76x76.png */; };
+		6C2A0DD517EC74BB007C3997 /* ipgw_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C2A0DCE17EC74BB007C3997 /* ipgw_114x114.png */; };
+		6C2A0DD617EC74BB007C3997 /* ipgw_120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C2A0DCF17EC74BB007C3997 /* ipgw_120x120.png */; };
+		6C2A0DD717EC74BB007C3997 /* ipgw_144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C2A0DD017EC74BB007C3997 /* ipgw_144x144.png */; };
+		6C2A0DD817EC74BB007C3997 /* ipgw_152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C2A0DD117EC74BB007C3997 /* ipgw_152x152.png */; };
 		E877DC3A151D6657007F5B3A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E877DC38151D6657007F5B3A /* Localizable.strings */; };
 		E877DC49151D8708007F5B3A /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E877DC47151D8707007F5B3A /* SettingsViewController.xib */; };
-		E87C91C414ED0ABD00E7198E /* ipgw_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = E87C91C314ED0ABD00E7198E /* ipgw_57x57.png */; };
-		E87C91C614ED0AC500E7198E /* ipgw_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = E87C91C514ED0AC500E7198E /* ipgw_114x114.png */; };
-		E87C91C814ED0AD400E7198E /* ipgw_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = E87C91C714ED0AD400E7198E /* ipgw_72x72.png */; };
 		E89B316B14D8E15900B00A6E /* ToggleSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E89B316A14D8E15900B00A6E /* ToggleSwitchCell.xib */; };
 		E8ADCF0114B5682000889AAA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8ADCF0014B5682000889AAA /* UIKit.framework */; };
 		E8ADCF0314B5682000889AAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8ADCF0214B5682000889AAA /* Foundation.framework */; };
@@ -28,6 +33,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C2A0DC717EC7340007C3997 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		6C2A0DCB17EC74BB007C3997 /* ipgw_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipgw_57x57.png; sourceTree = SOURCE_ROOT; };
+		6C2A0DCC17EC74BB007C3997 /* ipgw_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipgw_72x72.png; sourceTree = SOURCE_ROOT; };
+		6C2A0DCD17EC74BB007C3997 /* ipgw_76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipgw_76x76.png; sourceTree = SOURCE_ROOT; };
+		6C2A0DCE17EC74BB007C3997 /* ipgw_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipgw_114x114.png; sourceTree = SOURCE_ROOT; };
+		6C2A0DCF17EC74BB007C3997 /* ipgw_120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipgw_120x120.png; sourceTree = SOURCE_ROOT; };
+		6C2A0DD017EC74BB007C3997 /* ipgw_144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipgw_144x144.png; sourceTree = SOURCE_ROOT; };
+		6C2A0DD117EC74BB007C3997 /* ipgw_152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipgw_152x152.png; sourceTree = SOURCE_ROOT; };
 		E877DC39151D6657007F5B3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E877DC3F151D6707007F5B3A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E877DC43151D6759007F5B3A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/IPGWViewController_iPad.xib"; sourceTree = "<group>"; };
@@ -35,9 +48,6 @@
 		E877DC48151D8708007F5B3A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsViewController.xib"; sourceTree = "<group>"; };
 		E877DC4A151D8718007F5B3A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SettingsViewController.xib; sourceTree = "<group>"; };
 		E877DC50151D8CB6007F5B3A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		E87C91C314ED0ABD00E7198E /* ipgw_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ipgw_57x57.png; path = ../ipgw_57x57.png; sourceTree = "<group>"; };
-		E87C91C514ED0AC500E7198E /* ipgw_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ipgw_114x114.png; path = ../ipgw_114x114.png; sourceTree = "<group>"; };
-		E87C91C714ED0AD400E7198E /* ipgw_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ipgw_72x72.png; path = ../ipgw_72x72.png; sourceTree = "<group>"; };
 		E89B316A14D8E15900B00A6E /* ToggleSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToggleSwitchCell.xib; sourceTree = "<group>"; };
 		E8ADCEFC14B5682000889AAA /* IPGateway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IPGateway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8ADCF0014B5682000889AAA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -138,9 +148,14 @@
 		E8E5BD6E15734F95004BE6F9 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				E87C91C714ED0AD400E7198E /* ipgw_72x72.png */,
-				E87C91C514ED0AC500E7198E /* ipgw_114x114.png */,
-				E87C91C314ED0ABD00E7198E /* ipgw_57x57.png */,
+				6C2A0DCB17EC74BB007C3997 /* ipgw_57x57.png */,
+				6C2A0DC717EC7340007C3997 /* Default-568h@2x.png */,
+				6C2A0DCC17EC74BB007C3997 /* ipgw_72x72.png */,
+				6C2A0DCD17EC74BB007C3997 /* ipgw_76x76.png */,
+				6C2A0DCE17EC74BB007C3997 /* ipgw_114x114.png */,
+				6C2A0DCF17EC74BB007C3997 /* ipgw_120x120.png */,
+				6C2A0DD017EC74BB007C3997 /* ipgw_144x144.png */,
+				6C2A0DD117EC74BB007C3997 /* ipgw_152x152.png */,
 			);
 			name = Icons;
 			path = IPGateway;
@@ -172,7 +187,7 @@
 		E8ADCEF314B5681F00889AAA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Peking University";
 			};
 			buildConfigurationList = E8ADCEF614B5681F00889AAA /* Build configuration list for PBXProject "IPGateway" */;
@@ -200,14 +215,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8ADCF0B14B5682000889AAA /* InfoPlist.strings in Resources */,
+				6C2A0DD517EC74BB007C3997 /* ipgw_114x114.png in Resources */,
+				6C2A0DD417EC74BB007C3997 /* ipgw_76x76.png in Resources */,
 				E8ADCF1714B5682000889AAA /* IPGWViewController_iPhone.xib in Resources */,
 				E8ADCF1A14B5682000889AAA /* IPGWViewController_iPad.xib in Resources */,
 				E8FB815114B8161B00F6178C /* noname-lake.jpg in Resources */,
+				6C2A0DD617EC74BB007C3997 /* ipgw_120x120.png in Resources */,
+				6C2A0DD717EC74BB007C3997 /* ipgw_144x144.png in Resources */,
+				6C2A0DC817EC7340007C3997 /* Default-568h@2x.png in Resources */,
+				6C2A0DD817EC74BB007C3997 /* ipgw_152x152.png in Resources */,
 				E89B316B14D8E15900B00A6E /* ToggleSwitchCell.xib in Resources */,
-				E87C91C414ED0ABD00E7198E /* ipgw_57x57.png in Resources */,
-				E87C91C614ED0AC500E7198E /* ipgw_114x114.png in Resources */,
-				E87C91C814ED0AD400E7198E /* ipgw_72x72.png in Resources */,
 				E877DC3A151D6657007F5B3A /* Localizable.strings in Resources */,
+				6C2A0DD317EC74BB007C3997 /* ipgw_72x72.png in Resources */,
+				6C2A0DD217EC74BB007C3997 /* ipgw_57x57.png in Resources */,
 				E877DC49151D8708007F5B3A /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,10 +302,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv6,
-					armv7,
-				);
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -298,10 +320,15 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -312,17 +339,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv6,
-					armv7,
-				);
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
@@ -336,10 +369,6 @@
 		E8ADCF1E14B5682000889AAA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IPGateway/IPGateway-Prefix.pch";
@@ -355,10 +384,6 @@
 		E8ADCF1F14B5682000889AAA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IPGateway/IPGateway-Prefix.pch";

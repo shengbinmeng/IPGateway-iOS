@@ -51,6 +51,9 @@
 /* Go to Website */
 "goto_website" = "访问网站";
 
+/* Support Developer*/
+"support_developer" = "支持开发者";
+
 /* IP Location */
 "ip_location" = "IP地址";
 

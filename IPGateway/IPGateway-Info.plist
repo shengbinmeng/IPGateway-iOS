@@ -20,12 +20,23 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>ipgw_72x72.png</string>
-				<string>ipgw_57x57.png</string>
-				<string>ipgw_114x114.png</string>
+				<string>ipgw_120x120</string>
+				<string>ipgw_114x114</string>
+				<string>ipgw_57x57</string>
 			</array>
-			<key>UIPrerenderedIcon</key>
-			<false/>
+		</dict>
+	</dict>
+	<key>CFBundleIcons~ipad</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>ipgw_152x152</string>
+				<string>ipgw_76x76</string>
+				<string>ipgw_144x144</string>
+				<string>ipgw_72x72</string>
+			</array>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
@@ -37,11 +48,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.03</string>
+	<string>1.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.03</string>
+	<string>1.1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>
