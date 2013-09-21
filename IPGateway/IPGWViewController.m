@@ -116,7 +116,7 @@
 - (IBAction)logoutButtonDragOut:(id)sender {
     UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle: NSLocalizedString(@"egg1_alert_title",@"Egg #1")
-                          message:NSLocalizedString(@"egg1_alert_message",@"For Her. I hope she doesn't really leave.")
+                          message:NSLocalizedString(@"egg1_alert_message",@"Dedicated to CuiCui, my love.")
                           delegate:nil
                           cancelButtonTitle:NSLocalizedString(@"egg1_alert_cancel", @"Well")
                           otherButtonTitles:NSLocalizedString(@"egg1_alert_others1", @"Bless"), nil];
