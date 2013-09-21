@@ -7,7 +7,7 @@
 */
 
 /* This is a free app for logging into the IP gateway of PKU. Suggestions and bug reports can be sent to: shengbinmeng@gmail.com. */
-"about_alert_message" = "IPGateway是一个用于登录北大IP网关的iOS应用。有任何建议或问题可发信至: shengbinmeng@gmail.com.";
+"about_alert_message" = "IPGateway是一个用于登录北大IP网关的iOS应用。有任何建议或问题可发信至: shengbinmeng@gmail.com。";
 
 /* OK */
 "about_alert_others1" = "确定";
