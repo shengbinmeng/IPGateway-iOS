@@ -82,11 +82,29 @@
     if ([item isEqualToString:@"BALANCE"]) {
         NSRange range1 = [information rangeOfString:@"BALANCE="];
         NSRange range2 = [information rangeOfString:@"IP="];
-        infoItem = [information substringWithRange:NSMakeRange(range1.location + range1.length, range2.location - (range1.location + range1.length))];
+        infoItem = [information substringWithRange:NSMakeRange(range1.location + range1.length, range2.location - (range1.location + range1.length) - 1)];
+    } else if ([item isEqualToString:@"SCOPE"]) {
+        NSRange range1 = [information rangeOfString:@"SCOPE="];
+        NSRange range2 = [information rangeOfString:@"DEFICIT="];
+        if (range2.length == 0) {
+            range2 = [information rangeOfString:@"CONNECTIONS="];
+        }
+        infoItem = [information substringWithRange:NSMakeRange(range1.location + range1.length, range2.location - (range1.location + range1.length) - 1)];
+    } else if ([item isEqualToString:@"FR_DESC_EN"]) {
+        NSRange range1 = [information rangeOfString:@"FR_DESC_EN="];
+        NSRange range2 = [information rangeOfString:@"FR_TIME="];
+        if (range2.length == 0) {
+            range2 = [information rangeOfString:@"SCOPE="];
+        }
+        infoItem = [information substringWithRange:NSMakeRange(range1.location + range1.length, range2.location - (range1.location + range1.length) - 1)];
+    } else if ([item isEqualToString:@"FR_TIME"]) {
+        NSRange range1 = [information rangeOfString:@"FR_TIME="];
+        NSRange range2 = [information rangeOfString:@"SCOPE="];
+        infoItem = [information substringWithRange:NSMakeRange(range1.location + range1.length, range2.location - (range1.location + range1.length) - 1)];
     } else if ([item isEqualToString:@"IP"]) {
         NSRange range1 = [information rangeOfString:@"IP="];
         NSRange range2 = [information rangeOfString:@"MESSAGE="];
-        infoItem = [information substringWithRange:NSMakeRange(range1.location + range1.length, range2.location - (range1.location + range1.length))];
+        infoItem = [information substringWithRange:NSMakeRange(range1.location + range1.length, range2.location - (range1.location + range1.length) - 1)];
     }
         
     return infoItem;
@@ -251,6 +269,8 @@
         }
 
         NSString *information = [content substringWithRange:NSMakeRange(range1.location + range1.length, range2.location - (range1.location + range1.length))];
+        //information = @"SUCCESS=YES STATE=connected USERNAME=1101213838 FIXRATE=YES FR_DESC_CN=30元80小时包月 FR_DESC_EN=80hours/30RMB FR_TIME=27.361 SCOPE=international CONNECTIONS=1 BALANCE=1.525 IP=162.105.75.196 MESSAGE=  ";
+        //information = @"SUCCESS=YES STATE=connected USERNAME=1200014718 FIXRATE=YES FR_DESC_CN=30元80小时包月 FR_DESC_EN=80hours/30RMB FR_TIME=58.861 SCOPE=international DEFICIT=NO CONNECTIONS=1 BALANCE=90.093 IP=162.105.238.245 MESSAGE=  ";
 #ifdef DEBUG
         NSLog(@"information: **************\n%@",information);
 #endif
@@ -259,9 +279,21 @@
             NSString *name = [content substringWithRange:NSMakeRange(range.location + range.length + 9, 12)];
             name = [name substringToIndex:[name rangeOfString:@"</td>"].location];
             NSString *IP = [self findItem:@"IP" ofInfomation:information];
+            NSString *scope = [self findItem:@"SCOPE" ofInfomation:information];
             NSString *balance = [self findItem:@"BALANCE" ofInfomation:information];
-            balance = [balance stringByAppendingString:@" RMB"];
-            [messageTextView setText:[NSString stringWithFormat:@"%@ \n\n%@: %@ \n%@: %@ \n%@: %@", NSLocalizedString(@"login_success", @"login success! - You are online now."), NSLocalizedString(@"user_name", @"User Name"),name, NSLocalizedString(@"ip_location", @"IP Location"), IP, NSLocalizedString(@"account_balance", @"Account Balance"), balance]];
+            NSString *fr_desc = [self findItem:@"FR_DESC_EN" ofInfomation:information];
+            NSString *status = NSLocalizedString(@"normal", @"Normal");
+            if (![fr_desc isEqualToString:@"no"]) {
+                NSString *fr_time = [self findItem:@"FR_TIME" ofInfomation:information];
+                status = [NSString stringWithFormat:@"%@ \n%@: %@ hour", fr_desc, NSLocalizedString(@"time_used", @"Time Used"), fr_time];
+            }
+            if ([scope isEqualToString:@"international "]) {
+                scope = NSLocalizedString(@"global_paid", @"Global Paid");
+            } else {
+                scope = NSLocalizedString(@"cernet_free", @"CERNET Free");
+            }
+            
+            [messageTextView setText:[NSString stringWithFormat:@"%@ \n\n%@: %@ \n%@: %@ \n%@: %@ \n%@: %@ \n%@: %@ RMB", NSLocalizedString(@"login_success", @"login success! - You are online now."), NSLocalizedString(@"user_name", @"User Name"),name, NSLocalizedString(@"ip_location", @"IP Location"), IP, NSLocalizedString(@"connection_scope", @"Connection Scope"), scope, NSLocalizedString(@"account_status", @"Account Status"), status, NSLocalizedString(@"account_balance", @"Account Balance"), balance]];
             
             if ([rememberSwitch isOn]) {
                 [[NSUserDefaults standardUserDefaults] setValue:[[self useridTextField] text] forKey:@"rememberedUser"];

@@ -122,3 +122,11 @@
 
 /* User Name */
 "user_name" = "用户名";
+
+/* newly added */
+"normal" = "正常，无包月";
+"time_used" = "已用时长";
+"global_paid" = "国际收费地址域";
+"cernet_free" = "教育网免费地址域";
+"connection_scope" = "连接范围";
+"account_status" = "账户状态";

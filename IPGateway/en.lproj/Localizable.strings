@@ -122,3 +122,12 @@
 
 /* User Name */
 "user_name" = "User Name";
+
+/* newly added */
+"normal" = "Normal";
+"time_used" = "Time Used";
+"global_paid" = "Global Paid";
+"cernet_free" = "CERNET Free";
+"connection_scope" = "Connection Scope";
+"account_status" = "Account Status";
+
