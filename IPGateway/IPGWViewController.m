@@ -269,6 +269,7 @@
         }
 
         NSString *information = [content substringWithRange:NSMakeRange(range1.location + range1.length, range2.location - (range1.location + range1.length))];
+        // some examples
         //information = @"SUCCESS=YES STATE=connected USERNAME=1101213838 FIXRATE=YES FR_DESC_CN=30元80小时包月 FR_DESC_EN=80hours/30RMB FR_TIME=27.361 SCOPE=international CONNECTIONS=1 BALANCE=1.525 IP=162.105.75.196 MESSAGE=  ";
         //information = @"SUCCESS=YES STATE=connected USERNAME=1200014718 FIXRATE=YES FR_DESC_CN=30元80小时包月 FR_DESC_EN=80hours/30RMB FR_TIME=58.861 SCOPE=international DEFICIT=NO CONNECTIONS=1 BALANCE=90.093 IP=162.105.238.245 MESSAGE=  ";
 #ifdef DEBUG
@@ -285,9 +286,9 @@
             NSString *status = NSLocalizedString(@"normal", @"Normal");
             if (![fr_desc isEqualToString:@"no"]) {
                 NSString *fr_time = [self findItem:@"FR_TIME" ofInfomation:information];
-                status = [NSString stringWithFormat:@"%@ \n%@: %@ hour", fr_desc, NSLocalizedString(@"time_used", @"Time Used"), fr_time];
+                status = [NSString stringWithFormat:@"%@ \n%@: %@ hours", fr_desc, NSLocalizedString(@"time_used", @"Time Used"), fr_time];
             }
-            if ([scope isEqualToString:@"international "]) {
+            if ([scope isEqualToString:@"international"]) {
                 scope = NSLocalizedString(@"global_paid", @"Global Paid");
             } else {
                 scope = NSLocalizedString(@"cernet_free", @"CERNET Free");
