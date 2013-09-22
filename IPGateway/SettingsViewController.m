@@ -106,7 +106,7 @@
             [cell.detailTextLabel setText:@"http://its.pku.edu.cn"];
         }
         if ([indexPath row] == 1) {
-            [cell.textLabel setText:NSLocalizedString(@"support_developer", @"Useful Apps")];
+            [cell.textLabel setText:NSLocalizedString(@"support_developer", @"Support Developer")];
             [cell.textLabel setFont:[UIFont systemFontOfSize:17.0]];
             [cell.detailTextLabel setText:@"shengbin.me"];
         }
