@@ -120,14 +120,16 @@
 - (IBAction) switchValueChanged :(id)sender
 {
     if (sender == globalSwitch && [sender isOn]) {
-        UIAlertView *alert = [[UIAlertView alloc] 
-                              initWithTitle: NSLocalizedString(@"reminder_alert_title",@"Reminder") 
-                              message:NSLocalizedString(@"reminder_alert_message",@"Global access may need extra cost, please remember to logout when finish using.")
-                              delegate:nil
-                              cancelButtonTitle:NSLocalizedString(@"reminder_alert_cancel", @"Of course I will")
-                              otherButtonTitles:nil];
-        [alert show];
-        [alert release];
+        if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"remindMe"] isEqualToString:@"YES"]) {
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: NSLocalizedString(@"reminder_alert_title",@"Reminder")
+                                  message:NSLocalizedString(@"reminder_alert_message",@"Global access may need extra cost, please remember to logout when finish using.")
+                                  delegate:nil
+                                  cancelButtonTitle:NSLocalizedString(@"reminder_alert_cancel", @"Of course I will")
+                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        }
     }
 }
 

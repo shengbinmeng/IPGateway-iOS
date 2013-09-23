@@ -9,7 +9,7 @@
 #import "SettingsViewController.h"
 #import "ToggleSwitchCell.h"
 
-#define SECTION_NUM 2
+#define SECTION_NUM 3
 
 @implementation SettingsViewController
 
@@ -131,7 +131,21 @@
                 [[cell toggle] setOn:NO];
             }
             [[cell toggle] addTarget:self action:@selector(autoLoginToggled:) forControlEvents:UIControlEventValueChanged];
-        } else if ([indexPath row] == 1) {
+        }
+        return cell;
+    }
+    
+    if ([indexPath section] == 1) {
+        static NSString *CellIdentifier = @"ToggleSwitchCell";
+        ToggleSwitchCell *cell = (ToggleSwitchCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ToggleSwitchCell"owner:nil options:nil];
+            for (id oneObject in nib)
+                if ([oneObject isKindOfClass:[ToggleSwitchCell class]])
+                    cell = (ToggleSwitchCell *)oneObject;
+        }
+        
+        if ([indexPath row] == 0) {
             [[cell label] setText:NSLocalizedString(@"remind_me", @"Remind Me")];
             if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"remindMe"] isEqualToString:@"YES"]){
                 [[cell toggle] setOn:YES];
@@ -153,7 +167,7 @@
     if (section == 0) {
         footerText = NSLocalizedString(@"auto_login_explain", @"automatically try to login when the app became active");
     } else if (section == 1) {
-        //footerText = @"show up reminding messages (for example: if you turn Global Access on, or your account balance is low)";
+        footerText = NSLocalizedString(@"remind_me_explain", @"show a reminder message when you turn Global Access on");
     }
     return footerText;
 }

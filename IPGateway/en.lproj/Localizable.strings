@@ -131,3 +131,6 @@
 "connection_scope" = "Connection Scope";
 "account_status" = "Account Status";
 
+"remind_me_explain" = "show a reminder message when you turn Global Access on";
+
+

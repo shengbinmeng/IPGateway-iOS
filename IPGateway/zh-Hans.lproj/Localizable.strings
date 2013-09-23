@@ -130,3 +130,5 @@
 "cernet_free" = "教育网免费地址域";
 "connection_scope" = "连接范围";
 "account_status" = "账户状态";
+
+"remind_me_explain" = "打开收费地址时弹出提示信息";
