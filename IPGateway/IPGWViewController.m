@@ -325,7 +325,7 @@
                 [alert show];
                 [alert release];
             } else {
-                [messageTextView setText:NSLocalizedString(@"something_wrong", @"something wrong! - Sorry."])];
+                [messageTextView setText:reason];
             }
         } else {
             [messageTextView setText:NSLocalizedString(@"something_wrong", @"something wrong! - Sorry."])];
