@@ -8,8 +8,9 @@
 
 #import "SettingsViewController.h"
 #import "ToggleSwitchCell.h"
+#import "ValuePickerCell.h"
 
-#define SECTION_NUM 3
+#define SECTION_NUM 4
 
 @implementation SettingsViewController
 
@@ -158,6 +159,25 @@
         return cell;
     }
     
+    if ([indexPath section] == 2) {
+        static NSString *CellIdentifier = @"ValuePickerCell";
+        ValuePickerCell *cell = (ValuePickerCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ValuePickerCell"owner:nil options:nil];
+            for (id oneObject in nib)
+                if ([oneObject isKindOfClass:[ValuePickerCell class]])
+                    cell = (ValuePickerCell *)oneObject;
+        }
+        
+        if ([indexPath row] == 0) {
+            [[cell label] setText:@"Period (hours):"];
+            [[cell valueLable] setText:[NSString stringWithFormat:@"%.1f",cell.stepper.value]];
+        }
+        
+        return cell;
+        
+    }
+    
     return nil;
 }
 
@@ -168,6 +188,8 @@
         footerText = NSLocalizedString(@"auto_login_explain", @"automatically try to login when the app became active");
     } else if (section == 1) {
         footerText = NSLocalizedString(@"remind_me_explain", @"show a reminder message when you turn Global Access on");
+    } else if (section == 2) {
+        footerText = NSLocalizedString(@"notification_period_explain", @"notify you to turn off the Glabal Access after a period of time");
     }
     return footerText;
 }
@@ -197,6 +219,7 @@
 
 - (IBAction)doneButtonPressed:(id)sender {
     self.view.window.rootViewController = backViewController;
+    
 }
 
 @end
