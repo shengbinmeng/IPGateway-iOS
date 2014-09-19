@@ -33,7 +33,49 @@
     }
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    
+    UILocalNotification * localNotif=[launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if (localNotif != nil) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"Information"
+                              message:@"Hey, you were logged out as schedued. If Auto Login is anebled, you may be automatically logged in again. Check the status and handle it yourself."
+                              delegate:nil
+                              cancelButtonTitle:@"Dismiss"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
+    
     return YES;
+}
+
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateInactive) {
+        // Application was in the background when notification
+        // was delivered.
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"Information"
+                              message:@"You were logged out as schedued. If Auto Login was anebled, you may be automatically logged in again. Check the status and handle it yourself."
+                              delegate:nil
+                              cancelButtonTitle:@"Dismiss"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"Information"
+                              message:@"You were logged out as schedued. Check the status and handle it yourself."
+                              delegate:nil
+                              cancelButtonTitle:@"Dismiss"
+                              otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
+    application.applicationIconBadgeNumber = 0;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -64,6 +106,10 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+    
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    application.applicationIconBadgeNumber = 0;
+    
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"autoLogin"] isEqualToString:@"YES"]) {
         [[self viewController] loginButtonPressed:nil];
     }

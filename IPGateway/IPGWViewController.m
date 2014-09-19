@@ -76,6 +76,19 @@
     }
 }
 
+- (void) scheduleNotification
+{
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:1800];
+    localNotification.alertBody = @"You are logged out as schedued.";
+    localNotification.alertAction = @"Handle";
+    localNotification.soundName= UILocalNotificationDefaultSoundName;
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+}
+
 
 - (NSString*) findItem:(NSString *) item ofInfomation:(NSString*) information {
     NSString *infoItem = @"unknown";
@@ -292,6 +305,7 @@
             }
             if ([scope isEqualToString:@"international"]) {
                 scope = NSLocalizedString(@"global_paid", @"Global Paid");
+                [self scheduleNotification];
             } else {
                 scope = NSLocalizedString(@"cernet_free", @"CERNET Free");
             }
@@ -330,7 +344,6 @@
         } else {
             [messageTextView setText:NSLocalizedString(@"something_wrong", @"something wrong! - Sorry."])];
         }
-
     }
 }
 
