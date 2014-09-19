@@ -39,7 +39,7 @@
     if (localNotif != nil) {
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle:@"Information"
-                              message:@"Hey, you were logged out as schedued. If Auto Login is anebled, you may be automatically logged in again. Check the status and handle it yourself."
+                              message:@"Hey, you were notified to turn off Global Access. If Auto Login is anebled, you may be automatically logged in again. Check the status and handle it yourself."
                               delegate:nil
                               cancelButtonTitle:@"Dismiss"
                               otherButtonTitles:nil, nil];
@@ -59,7 +59,7 @@
         // was delivered.
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle:@"Information"
-                              message:@"You were logged out as schedued. If Auto Login was anebled, you may be automatically logged in again. Check the status and handle it yourself."
+                              message:@"You were notified to turn off Global Access. If Auto Login was anebled, you may be automatically logged in again. Check the status and handle it yourself."
                               delegate:nil
                               cancelButtonTitle:@"Dismiss"
                               otherButtonTitles:nil, nil];
@@ -68,7 +68,7 @@
     } else {
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle:@"Information"
-                              message:@"You were logged out as schedued. Check the status and handle it yourself."
+                              message:@"You were notified to turn off Global Access. Check the status and handle it yourself."
                               delegate:nil
                               cancelButtonTitle:@"Dismiss"
                               otherButtonTitles:nil, nil];

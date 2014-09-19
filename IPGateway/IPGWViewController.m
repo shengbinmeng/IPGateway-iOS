@@ -80,7 +80,7 @@
 {
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:1800];
-    localNotification.alertBody = @"You are logged out as schedued.";
+    localNotification.alertBody = @"You are notified to turn off the Global Access as schedued.";
     localNotification.alertAction = @"Handle";
     localNotification.soundName= UILocalNotificationDefaultSoundName;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
