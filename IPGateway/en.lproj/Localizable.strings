@@ -132,5 +132,6 @@
 "account_status" = "Account Status";
 
 "remind_me_explain" = "show a reminder message when you turn Global Access on";
+"notification_period_explain" = "notify you to turn off the Glabal Access after a period of time";
 
 
