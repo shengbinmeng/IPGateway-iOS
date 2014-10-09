@@ -87,6 +87,7 @@
     localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    [localNotification release];
 }
 
 
