@@ -76,6 +76,10 @@
     }
 }
 
+- (void) stepperValueChanged:(UIStepper*)sender{
+    [((ValuePickerCell*)(sender.superview)).valueLable setText:[NSString stringWithFormat:@"%.1f", sender.value]];
+}
+
 
 #pragma mark - Table View delegate and data source
 
@@ -171,9 +175,9 @@
         
         if ([indexPath row] == 0) {
             [[cell label] setText:NSLocalizedString(@"period", @"Period (hours):")];
-            [[cell valueLable] setText:[NSString stringWithFormat:@"%.1f",cell.stepper.value]];
+            [[cell valueLable] setText:[NSString stringWithFormat:@"%.1f", cell.stepper.value]];
+            [[cell stepper] addTarget:self action:@selector(stepperValueChanged:) forControlEvents:UIControlEventValueChanged];
         }
-        
         return cell;
         
     }
