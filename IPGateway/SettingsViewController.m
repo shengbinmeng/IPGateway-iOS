@@ -170,7 +170,7 @@
         }
         
         if ([indexPath row] == 0) {
-            [[cell label] setText:@"Period (hours):"];
+            [[cell label] setText:NSLocalizedString(@"period", @"Period (hours):")];
             [[cell valueLable] setText:[NSString stringWithFormat:@"%.1f",cell.stepper.value]];
         }
         

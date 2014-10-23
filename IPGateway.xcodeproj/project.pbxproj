@@ -120,23 +120,23 @@
 		E8ADCF0614B5682000889AAA /* IPGateway */ = {
 			isa = PBXGroup;
 			children = (
-				E8FB815014B8161B00F6178C /* noname-lake.jpg */,
-				E877DC47151D8707007F5B3A /* SettingsViewController.xib */,
-				E89B316A14D8E15900B00A6E /* ToggleSwitchCell.xib */,
-				6CBA344819CC7662002B9A39 /* ValuePickerCell.xib */,
-				6CBA344A19CC7975002B9A39 /* ValuePickerCell.h */,
-				6CBA344B19CC7975002B9A39 /* ValuePickerCell.m */,
-				E8E09BB914D8E26D00291900 /* ToggleSwitchCell.h */,
-				E8E09BBA14D8E26D00291900 /* ToggleSwitchCell.m */,
 				E8ADCF0F14B5682000889AAA /* IPGWAppDelegate.h */,
 				E8ADCF1014B5682000889AAA /* IPGWAppDelegate.m */,
-				E8B5624B14D8CAF700E41B86 /* SettingsViewController.h */,
-				E8B5624C14D8CAF700E41B86 /* SettingsViewController.m */,
+				E8ADCF1814B5682000889AAA /* IPGWViewController_iPad.xib */,
+				E8ADCF1514B5682000889AAA /* IPGWViewController_iPhone.xib */,
 				E8ADCF1214B5682000889AAA /* IPGWViewController.h */,
 				E8ADCF1314B5682000889AAA /* IPGWViewController.m */,
-				E8ADCF1514B5682000889AAA /* IPGWViewController_iPhone.xib */,
-				E8ADCF1814B5682000889AAA /* IPGWViewController_iPad.xib */,
+				E8FB815014B8161B00F6178C /* noname-lake.jpg */,
+				E8B5624B14D8CAF700E41B86 /* SettingsViewController.h */,
+				E8B5624C14D8CAF700E41B86 /* SettingsViewController.m */,
+				E877DC47151D8707007F5B3A /* SettingsViewController.xib */,
 				E8ADCF0714B5682000889AAA /* Supporting Files */,
+				E8E09BB914D8E26D00291900 /* ToggleSwitchCell.h */,
+				E8E09BBA14D8E26D00291900 /* ToggleSwitchCell.m */,
+				E89B316A14D8E15900B00A6E /* ToggleSwitchCell.xib */,
+				6CBA344A19CC7975002B9A39 /* ValuePickerCell.h */,
+				6CBA344B19CC7975002B9A39 /* ValuePickerCell.m */,
+				6CBA344819CC7662002B9A39 /* ValuePickerCell.xib */,
 			);
 			path = IPGateway;
 			sourceTree = "<group>";

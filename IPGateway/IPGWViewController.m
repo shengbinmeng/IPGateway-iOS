@@ -13,6 +13,7 @@
     NSMutableData *receivedData1;
     NSURLConnection *connection1;
     BOOL firstAppear;
+    UIAlertView* repeatAlert;
 }
 
 @synthesize  useridTextField, passwordTextField, globalSwitch, rememberSwitch;
@@ -26,11 +27,27 @@
 
 #pragma mark - View lifecycle
 
+- (void)longPressHandler:(UILongPressGestureRecognizer*)gesture {
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        repeatAlert = [[UIAlertView alloc]
+                       initWithTitle:NSLocalizedString(@"repeat_alert_title", @"Disconnect All")
+                       message:NSLocalizedString(@"repeat_alert_message", @"Do you want to disconnect all connections?")
+                       delegate:self
+                       cancelButtonTitle:NSLocalizedString(@"max_alert_cancel", @"No")
+                       otherButtonTitles:NSLocalizedString(@"max_alert_others1", @"Yes"), nil];
+        [repeatAlert show];
+        [repeatAlert release];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     firstAppear = YES;
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressHandler:)];
+    [self.logoutButton addGestureRecognizer:longPress];
+    [longPress release];
 }
 
 - (void)viewDidUnload
@@ -80,8 +97,8 @@
 {
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:1800];
-    localNotification.alertBody = @"You are notified to turn off the Global Access as schedued.";
-    localNotification.alertAction = @"Handle";
+    localNotification.alertBody = NSLocalizedString(@"notification_alert_body", @"You are notified to turn off the Global Access as schedued.");
+    localNotification.alertAction = NSLocalizedString(@"notification_alert_action", @"Handle");
     localNotification.soundName= UILocalNotificationDefaultSoundName;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
@@ -136,7 +153,7 @@
     if (sender == globalSwitch && [sender isOn]) {
         if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"remindMe"] isEqualToString:@"YES"]) {
             UIAlertView *alert = [[UIAlertView alloc]
-                                  initWithTitle: NSLocalizedString(@"reminder_alert_title",@"Reminder")
+                                  initWithTitle: NSLocalizedString(@"reminder_alert_title", @"Reminder")
                                   message:NSLocalizedString(@"reminder_alert_message",@"Global access may need extra cost, please remember to logout when finish using.")
                                   delegate:nil
                                   cancelButtonTitle:NSLocalizedString(@"reminder_alert_cancel", @"Of course I will")
@@ -149,14 +166,15 @@
 
 - (IBAction)logoutButtonDragOut:(id)sender {
     UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle: NSLocalizedString(@"egg1_alert_title",@"Egg #1")
-                          message:NSLocalizedString(@"egg1_alert_message",@"Dedicated to CuiCui, my love.")
+                          initWithTitle: NSLocalizedString(@"egg1_alert_title", @"Egg #1")
+                          message:NSLocalizedString(@"egg1_alert_message", @"Dedicated to CuiCui, my love.")
                           delegate:nil
                           cancelButtonTitle:NSLocalizedString(@"egg1_alert_cancel", @"Well")
                           otherButtonTitles:NSLocalizedString(@"egg1_alert_others1", @"Bless"), nil];
     [alert show];
     [alert release];
 }
+
 
 /*
  https://its.pku.edu.cn:5428/ipgatewayofpku?uid=1101111141&password=pas&operation=connect&range=2&timeout=2
@@ -168,6 +186,8 @@
 
 - (void) loginButtonPressed:(id)sender
 {
+    [logoutButton setEnabled:YES];
+
     [useridTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
     [messageTextView setText:NSLocalizedString(@"logging_in", @"logging in ...")];
@@ -205,10 +225,18 @@
     [request setHTTPMethod:@"GET"]; 
     [request setTimeoutInterval:45];
     
+    if (connection1) {
+        [connection1 release];
+        connection1 = nil;
+    }
     connection1 = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     if (connection1) {
         // Create the NSMutableData to hold the received data.
         // receivedData is an instance variable declared elsewhere.
+        if (receivedData1) {
+            [receivedData1 release];
+            receivedData1 = nil;
+        }
         receivedData1 = [[NSMutableData data] retain];
     } else {
         // Inform the user that the connection failed.
@@ -332,11 +360,11 @@
                 [messageTextView setText: NSLocalizedString(@"login_failed_scope_error", @"login failed! - Your account is only limited to CERNET free IP. Please turn off Global Access or change your settings from http://its.pku.edu.cn.")];
             } else if ([reason rangeOfString:@"连接数超过"].length != 0) {
                 UIAlertView *alert = [[UIAlertView alloc] 
-                                      initWithTitle:NSLocalizedString(@"max_alert_title",@"Message") 
-                                      message:NSLocalizedString(@"max_alert_message",@"You have reached the max connection number. Disconnect all others and connect again?")
+                                      initWithTitle:NSLocalizedString(@"max_alert_title", @"Message")
+                                      message:NSLocalizedString(@"max_alert_message", @"You have reached the max connection number. Disconnect all others and connect again?")
                                       delegate:self
-                                      cancelButtonTitle:NSLocalizedString(@"max_alert_cancel",@"No")
-                                      otherButtonTitles:NSLocalizedString(@"max_alert_others1",@"Yes"), nil];
+                                      cancelButtonTitle:NSLocalizedString(@"max_alert_cancel", @"No")
+                                      otherButtonTitles:NSLocalizedString(@"max_alert_others1", @"Yes"), nil];
                 [alert show];
                 [alert release];
             } else {
@@ -350,7 +378,46 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if(buttonIndex == 0){
+    if (alertView == repeatAlert) {
+        if (buttonIndex == 0) {
+            return;
+        } else if (buttonIndex == 1) {
+            [messageTextView setText:NSLocalizedString(@"logging_out", @"logging out ...")];
+            
+            NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+            [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://its.pku.edu.cn:5428/ipgatewayofpku?uid=%@&password=%@&operation=disconnectall&range=%d&timeout=3", [[self useridTextField] text], [[self passwordTextField] text], 2]]];
+            [request setHTTPMethod:@"GET"];
+            [request setTimeoutInterval:15];
+            
+            NSData *returnedData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+            if (returnedData) {
+                NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+                NSString *content = [[[NSString alloc] initWithData:returnedData encoding:enc] autorelease];
+#ifdef DEBUG
+                NSLog(@"***************\n%@",content);
+#endif
+                NSRange range = [content rangeOfString:@"<!--IPGWCLIENT_START SUCCESS=YES"];
+                if(range.length != 0) {
+                    [messageTextView setText:NSLocalizedString(@"disconnect_all_success", @"Disconnect all success! - All of your connections are closed now.")];
+                    [logoutButton setEnabled:NO];
+                    if ([rememberSwitch isOn] == NO) {
+                        [useridTextField setText:@""];
+                        [passwordTextField setText:@""];
+                        [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"rememberedUser"];
+                        [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"rememberedPwd"];
+                    }
+                } else {
+                    [messageTextView setText:NSLocalizedString(@"something_wrong", @"something wrong! - Sorry."])];
+                }
+            } else {
+                [messageTextView setText:NSLocalizedString(@"something_wrong", @"something wrong! - Sorry."])];
+            }
+        }
+        
+        return;
+    }
+    
+    if(buttonIndex == 0) {
         [messageTextView setText:NSLocalizedString(@"login_failed_max_connections", @"login failed! - Max connection number reached.")];
         return;
     } else if(buttonIndex == 1) {

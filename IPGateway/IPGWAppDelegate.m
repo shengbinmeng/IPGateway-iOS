@@ -38,10 +38,10 @@
     UILocalNotification * localNotif=[launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
     if (localNotif != nil) {
         UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle:@"Information"
-                              message:@"Hey, you were notified to turn off Global Access. If Auto Login is anebled, you may be automatically logged in again. Check the status and handle it yourself."
+                              initWithTitle:NSLocalizedString(@"handle_alert_title", @"Information")
+                              message:NSLocalizedString(@"handle_alert_body", @"You were notified to turn off Global Access. If Auto Login is anebled, you may be automatically logged in again. Check the status and handle it yourself.")
                               delegate:nil
-                              cancelButtonTitle:@"Dismiss"
+                              cancelButtonTitle:NSLocalizedString(@"dismiss", @"Dismiss")
                               otherButtonTitles:nil, nil];
         [alert show];
         [alert release];
@@ -58,19 +58,19 @@
         // Application was in the background when notification
         // was delivered.
         UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle:@"Information"
-                              message:@"You were notified to turn off Global Access. If Auto Login was anebled, you may be automatically logged in again. Check the status and handle it yourself."
+                              initWithTitle:NSLocalizedString(@"handle_alert_title", @"Information")
+                              message:NSLocalizedString(@"handle_alert_body", @"You were notified to turn off Global Access. If Auto Login is anebled, you may be automatically logged in again. Check the status and handle it yourself.")
                               delegate:nil
-                              cancelButtonTitle:@"Dismiss"
+                              cancelButtonTitle:NSLocalizedString(@"dismiss", @"Dismiss")
                               otherButtonTitles:nil, nil];
         [alert show];
         [alert release];
     } else {
         UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle:@"Information"
-                              message:@"You were notified to turn off Global Access. Check the status and handle it yourself."
+                              initWithTitle:NSLocalizedString(@"handle_alert_title", @"Information")
+                              message:NSLocalizedString(@"fg_handle_alert_body", @"You were notified to turn off Global Access. Check the status and handle it yourself.")
                               delegate:nil
-                              cancelButtonTitle:@"Dismiss"
+                              cancelButtonTitle:NSLocalizedString(@"dismiss", @"Dismiss")
                               otherButtonTitles:nil, nil];
         [alert show];
         [alert release];

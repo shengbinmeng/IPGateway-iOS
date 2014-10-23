@@ -132,6 +132,17 @@
 "account_status" = "Account Status";
 
 "remind_me_explain" = "show a reminder message when you turn Global Access on";
+
+"period" = "Period (hours):";
 "notification_period_explain" = "notify you to turn off the Glabal Access after a period of time";
+"notification_alert_body" = "You are notified to turn off the Global Access as schedued.";
+"handle_alert_title" = "Information";
+"handle_alert_body" = "You were notified to turn off Global Access. If Auto Login is anebled, you may be automatically logged in again. Check the status and handle it yourself.";
+"fg_handle_alert_body" = "You were notified to turn off Global Access. Check the status and handle it yourself.";
+"dismiss" = "Dismiss";
+
+"repeat_alert_title" = "Disconnect All";
+"repeat_alert_message" = "Do you want to disconnect all connections?";
+"disconnect_all_success" = "Disconnect all success! - All of your connections are closed now.";
 
 
