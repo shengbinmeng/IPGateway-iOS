@@ -76,8 +76,8 @@
     }
 }
 
-- (void) stepperValueChanged:(UIStepper*)sender{
-    [((ValuePickerCell*)(sender.superview)).valueLable setText:[NSString stringWithFormat:@"%.1f", sender.value]];
+- (void) notifyPeriodChanged:(UIStepper*)sender{
+    [[NSUserDefaults standardUserDefaults] setDouble:sender.value forKey:@"notifyPeriod"];
 }
 
 
@@ -175,11 +175,11 @@
         
         if ([indexPath row] == 0) {
             [[cell label] setText:NSLocalizedString(@"period", @"Period (hours):")];
+            [[cell stepper] setValue:[[NSUserDefaults standardUserDefaults] doubleForKey:@"notifyPeriod"]];
             [[cell valueLable] setText:[NSString stringWithFormat:@"%.1f", cell.stepper.value]];
-            [[cell stepper] addTarget:self action:@selector(stepperValueChanged:) forControlEvents:UIControlEventValueChanged];
+            [[cell stepper] addTarget:self action:@selector(notifyPeriodChanged:) forControlEvents:UIControlEventValueChanged];
         }
         return cell;
-        
     }
     
     return nil;

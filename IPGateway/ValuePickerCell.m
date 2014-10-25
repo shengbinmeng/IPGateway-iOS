@@ -12,6 +12,10 @@
 @synthesize label, valueLable;
 @synthesize stepper;
 
+- (IBAction)stepperValueChanged:(UIStepper *)sender {
+    [self.valueLable setText:[NSString stringWithFormat:@"%.1f", sender.value]];
+}
+
 - (void)dealloc {
     [self.label release];
     [self.valueLable release];

@@ -34,6 +34,10 @@
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     
+    NSDictionary *userDefaultsDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          [NSNumber numberWithDouble:1.0], @"notifyPeriod",
+                                          nil];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
     
     UILocalNotification * localNotif=[launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
     if (localNotif != nil) {
