@@ -10,7 +10,7 @@
 #import "ToggleSwitchCell.h"
 #import "ValuePickerCell.h"
 
-#define SECTION_NUM 4
+#define SECTION_NUM 5
 
 @implementation SettingsViewController
 
@@ -73,6 +73,14 @@
         [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"remindMe"];
     } else {
         [[NSUserDefaults standardUserDefaults] setValue:@"NO" forKey:@"remindMe"];
+    }
+}
+
+- (void) disconnectAllToggled:(id)sender {
+    if ([sender isOn]) {
+        [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"disconnectAll"];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setValue:@"NO" forKey:@"disconnectAll"];
     }
 }
 
@@ -182,6 +190,28 @@
         return cell;
     }
     
+    if ([indexPath section] == 3) {
+        static NSString *CellIdentifier = @"ToggleSwitchCell";
+        ToggleSwitchCell *cell = (ToggleSwitchCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ToggleSwitchCell"owner:nil options:nil];
+            for (id oneObject in nib)
+                if ([oneObject isKindOfClass:[ToggleSwitchCell class]])
+                    cell = (ToggleSwitchCell *)oneObject;
+        }
+        
+        if ([indexPath row] == 0) {
+            [[cell label] setText:NSLocalizedString(@"disconnect_all", @"Disconnect All")];
+            if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"disconnectAll"] isEqualToString:@"YES"]){
+                [[cell toggle] setOn:YES];
+            } else {
+                [[cell toggle] setOn:NO];
+            }
+            [[cell toggle] addTarget:self action:@selector(disconnectAllToggled:) forControlEvents:UIControlEventValueChanged];
+        }
+        return cell;
+    }
+    
     return nil;
 }
 
@@ -189,11 +219,13 @@
 {
 	NSString *footerText = @"";
     if (section == 0) {
-        footerText = NSLocalizedString(@"auto_login_explain", @"automatically try to login when the app became active");
+        footerText = NSLocalizedString(@"auto_login_explain", @"Automatically try to login when the app became active");
     } else if (section == 1) {
-        footerText = NSLocalizedString(@"remind_me_explain", @"show a reminder message when you turn Global Access on");
+        footerText = NSLocalizedString(@"remind_me_explain", @"Show a reminder message when you turn Global Access on");
     } else if (section == 2) {
-        footerText = NSLocalizedString(@"notification_period_explain", @"notify you to turn off the Glabal Access after a period of time");
+        footerText = NSLocalizedString(@"notification_period_explain", @"Notify you to turn off the Glabal Access after a period of time");
+    } else if (section == 3) {
+        footerText = NSLocalizedString(@"disconnect_all_explain", @"If enabled, you can long press the Logout button to close all the connections under your account.");
     }
     return footerText;
 }
@@ -218,8 +250,6 @@
     }
 	return header;
 }
-
-
 
 - (IBAction)doneButtonPressed:(id)sender {
     self.view.window.rootViewController = backViewController;

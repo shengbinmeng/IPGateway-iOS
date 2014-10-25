@@ -144,3 +144,6 @@
 "repeat_alert_title" = "断开所有连接";
 "repeat_alert_message" = "你想要断开多有连接吗？";
 "disconnect_all_success" = "断开所有连接成功！ - 你账号下的所有连接都已经关闭";
+
+"disconnect_all" = "断开所有连接";
+"disconnect_all_explain" = "如果该功能开启，你可以长按‘断开’按钮来关闭你账户下的所有连接。";

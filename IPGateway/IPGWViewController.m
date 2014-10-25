@@ -28,6 +28,9 @@
 #pragma mark - View lifecycle
 
 - (void)longPressHandler:(UILongPressGestureRecognizer*)gesture {
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"disconnectAll"] isEqualToString:@"NO"]) {
+        return;
+    }
     if (gesture.state == UIGestureRecognizerStateBegan) {
         repeatAlert = [[UIAlertView alloc]
                        initWithTitle:NSLocalizedString(@"repeat_alert_title", @"Disconnect All")
