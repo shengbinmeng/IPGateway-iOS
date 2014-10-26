@@ -141,8 +141,8 @@
 "dismiss" = "Dismiss";
 
 "repeat_alert_title" = "Disconnect All";
-"repeat_alert_message" = "Do you want to disconnect all connections?";
-"disconnect_all_success" = "Disconnect all success! - All of your connections are closed now.";
+"repeat_alert_message" = "Do you want to close all connections of your account?";
+"disconnect_all_success" = "Disconnect all success! - All the connections of your account are closed now.";
 
 "disconnect_all" = "Disconnect All";
 "disconnect_all_explain" = "If enabled, you can long press the Logout button to close all the connections under your account.";

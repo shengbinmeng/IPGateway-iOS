@@ -141,7 +141,7 @@
 "dismiss" = "知道了";
 
 "repeat_alert_title" = "断开所有连接";
-"repeat_alert_message" = "你想要断开多有连接吗？";
+"repeat_alert_message" = "你想要断开你账户下的所有连接吗？";
 "disconnect_all_success" = "断开所有连接成功！ - 你账号下的所有连接都已经关闭";
 
 "disconnect_all" = "断开所有连接";
