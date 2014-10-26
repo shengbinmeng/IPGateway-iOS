@@ -144,6 +144,10 @@
         NSRange range1 = [information rangeOfString:@"IP="];
         NSRange range2 = [information rangeOfString:@"MESSAGE="];
         infoItem = [information substringWithRange:NSMakeRange(range1.location + range1.length, range2.location - (range1.location + range1.length) - 1)];
+    } else if ([item isEqualToString:@"CONNECTIONS"]) {
+        NSRange range1 = [information rangeOfString:@"CONNECTIONS="];
+        NSRange range2 = [information rangeOfString:@"BALANCE="];
+        infoItem = [information substringWithRange:NSMakeRange(range1.location + range1.length, range2.location - (range1.location + range1.length) - 1)];
     }
         
     return infoItem;
@@ -335,6 +339,8 @@
             NSString *scope = [self findItem:@"SCOPE" ofInfomation:information];
             NSString *balance = [self findItem:@"BALANCE" ofInfomation:information];
             NSString *fr_desc = [self findItem:@"FR_DESC_EN" ofInfomation:information];
+            NSString *connections = [self findItem:@"CONNECTIONS" ofInfomation:information];
+
             NSString *status = NSLocalizedString(@"normal", @"Normal");
             if (![fr_desc isEqualToString:@"no"]) {
                 NSString *fr_time = [self findItem:@"FR_TIME" ofInfomation:information];
@@ -347,7 +353,7 @@
                 scope = NSLocalizedString(@"cernet_free", @"CERNET Free");
             }
             
-            [messageTextView setText:[NSString stringWithFormat:@"%@ \n\n%@: %@ \n%@: %@ \n%@: %@ \n%@: %@ \n%@: %@ RMB", NSLocalizedString(@"login_success", @"login success! - You are online now."), NSLocalizedString(@"user_name", @"User Name"),name, NSLocalizedString(@"ip_location", @"IP Location"), IP, NSLocalizedString(@"connection_scope", @"Connection Scope"), scope, NSLocalizedString(@"account_status", @"Account Status"), status, NSLocalizedString(@"account_balance", @"Account Balance"), balance]];
+            [messageTextView setText:[NSString stringWithFormat:@"%@ \n\n%@: %@ \n%@: %@ \n%@: %@ \n%@: %@ \n%@: %@ RMB \n%@: %@", NSLocalizedString(@"login_success", @"login success! - You are online now."), NSLocalizedString(@"user_name", @"User Name"),name, NSLocalizedString(@"ip_location", @"IP Location"), IP, NSLocalizedString(@"connection_scope", @"Connection Scope"), scope, NSLocalizedString(@"account_status", @"Account Status"), status, NSLocalizedString(@"account_balance", @"Account Balance"), balance, NSLocalizedString(@"account_connections", @"Account Connections"), connections]];
             
             if ([rememberSwitch isOn]) {
                 [[NSUserDefaults standardUserDefaults] setValue:[[self useridTextField] text] forKey:@"rememberedUser"];

@@ -146,3 +146,4 @@
 
 "disconnect_all" = "断开所有连接";
 "disconnect_all_explain" = "如果该功能开启，你可以长按‘断开’按钮来关闭你账户下的所有连接。";
+"account_connections" = "账户连接数";

@@ -146,3 +146,5 @@
 
 "disconnect_all" = "Disconnect All";
 "disconnect_all_explain" = "If enabled, you can long press the Logout button to close all the connections under your account.";
+"account_connections" = "Account Connections";
+
