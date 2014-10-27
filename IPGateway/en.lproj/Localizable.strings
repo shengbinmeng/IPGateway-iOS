@@ -132,7 +132,7 @@
 
 "remind_me_explain" = "Show a reminder message when you turn Global Access on";
 
-"period" = "Notification Period (hours):";
+"period" = "Period (hours):";
 "notification_period_explain" = "If you connect with Glabal Access, notify you to turn it off after a period of time (0 means no notification)";
 "notification_alert_body" = "You are notified to turn off the Global Access as schedued.";
 "handle_alert_title" = "Information";
