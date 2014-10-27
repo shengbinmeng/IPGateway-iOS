@@ -132,8 +132,8 @@
 
 "remind_me_explain" = "打开收费地址时弹出提示信息";
 
-"period" = "间隔 (小时):";
-"notification_period_explain" = "隔一段时间之后通知关闭收费地址（0表示不通知）";
+"period" = "通知间隔 (小时):";
+"notification_period_explain" = "如果打开了收费地址，隔一段时间通知你关闭（0表示不通知）";
 "notification_alert_body" = "按照设置的间隔，通知你关闭收费地址。";
 "handle_alert_title" = "信息";
 "handle_alert_body" = "你已经被通知关闭收费地址. 如果开启了自动登录，你可能已经自动登录了进去. 请自行检查当前的连接状态并处理。";
