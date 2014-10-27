@@ -198,8 +198,6 @@
 
 - (void) loginButtonPressed:(id)sender
 {
-    [logoutButton setEnabled:YES];
-
     [useridTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
     [messageTextView setText:NSLocalizedString(@"logging_in", @"logging in ...")];
