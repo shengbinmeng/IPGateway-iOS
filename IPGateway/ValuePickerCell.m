@@ -16,11 +16,4 @@
     [self.valueLable setText:[NSString stringWithFormat:@"%.1f", sender.value]];
 }
 
-- (void)dealloc {
-    [self.label release];
-    [self.valueLable release];
-    [self.stepper release];
-    [super dealloc];
-}
-
 @end
