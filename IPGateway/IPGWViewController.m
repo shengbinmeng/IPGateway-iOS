@@ -280,6 +280,8 @@
                 [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"rememberedUser"];
                 [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"rememberedPwd"];
             }
+            // cancel notifications since no Global Access at all
+            [[UIApplication sharedApplication] cancelAllLocalNotifications];
         } else {
             [messageTextView setText:NSLocalizedString(@"something_wrong", @"something wrong! - Sorry."])];
         }
