@@ -104,7 +104,7 @@
     }
     
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:hours*60];
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:hours*60*60];
     localNotification.alertBody = NSLocalizedString(@"notification_alert_body", @"You are notified to turn off the Global Access as schedued.");
     localNotification.alertAction = NSLocalizedString(@"notification_alert_action", @"Handle");
     localNotification.soundName= UILocalNotificationDefaultSoundName;
