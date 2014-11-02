@@ -348,6 +348,9 @@
             }
             if ([scope isEqualToString:@"international"]) {
                 scope = NSLocalizedString(@"global_paid", @"Global Paid");
+                
+                // first cancel previous notification, then schedule a new one
+                [[UIApplication sharedApplication] cancelAllLocalNotifications];
                 [self scheduleNotification];
             } else {
                 scope = NSLocalizedString(@"cernet_free", @"CERNET Free");
