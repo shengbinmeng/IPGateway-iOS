@@ -354,6 +354,8 @@
                 [self scheduleNotification];
             } else {
                 scope = NSLocalizedString(@"cernet_free", @"CERNET Free");
+                // cancel notification since logged in with Global Access off
+                [[UIApplication sharedApplication] cancelAllLocalNotifications];
             }
             
             [messageTextView setText:[NSString stringWithFormat:@"%@ \n\n%@: %@ \n%@: %@ \n%@: %@ \n%@: %@ \n%@: %@ RMB \n%@: %@", NSLocalizedString(@"login_success", @"login success! - You are online now."), NSLocalizedString(@"user_name", @"User Name"),name, NSLocalizedString(@"ip_location", @"IP Location"), IP, NSLocalizedString(@"connection_scope", @"Connection Scope"), scope, NSLocalizedString(@"account_status", @"Account Status"), status, NSLocalizedString(@"account_balance", @"Account Balance"), balance, NSLocalizedString(@"account_connections", @"Account Connections"), connections]];
