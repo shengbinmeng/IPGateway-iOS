@@ -64,7 +64,6 @@
 {
     [super viewWillAppear:animated];
     if(firstAppear) {
-        [logoutButton setEnabled:NO];
         [useridTextField setText:[[NSUserDefaults standardUserDefaults] valueForKey:@"rememberedUser"]];
         [passwordTextField setText:[[NSUserDefaults standardUserDefaults] valueForKey:@"rememberedPwd"]];
     }
@@ -273,7 +272,6 @@
         NSRange range = [content rangeOfString:@"<!--IPGWCLIENT_START SUCCESS=YES"];
         if(range.length != 0) {
             [messageTextView setText:NSLocalizedString(@"logout_success", @"logout success! - You are offline now.")];
-            [logoutButton setEnabled:NO];
             if ([rememberSwitch isOn] == NO) {
                 [useridTextField setText:@""];
                 [passwordTextField setText:@""];
@@ -364,8 +362,7 @@
                 [[NSUserDefaults standardUserDefaults] setValue:[[self useridTextField] text] forKey:@"rememberedUser"];
                 [[NSUserDefaults standardUserDefaults] setValue:[[self passwordTextField] text] forKey:@"rememberedPwd"];
             }
-            [logoutButton setEnabled:YES];
-        } else if([[information substringToIndex:10] isEqualToString:@"SUCCESS=NO"]){ 
+        } else if([[information substringToIndex:10] isEqualToString:@"SUCCESS=NO"]){
             NSRange range = [information rangeOfString:@"REASON="];
             NSString *reason = [information substringFromIndex:(range.location + range.length)];
             if ([reason rangeOfString:@"户名错"].length != 0 || [reason rangeOfString:@"口令错误"].length != 0) {
@@ -418,7 +415,6 @@
                 NSRange range = [content rangeOfString:@"<!--IPGWCLIENT_START SUCCESS=YES"];
                 if(range.length != 0) {
                     [messageTextView setText:NSLocalizedString(@"disconnect_all_success", @"Disconnect all success! - All of your connections are closed now.")];
-                    [logoutButton setEnabled:NO];
                     if ([rememberSwitch isOn] == NO) {
                         [useridTextField setText:@""];
                         [passwordTextField setText:@""];
