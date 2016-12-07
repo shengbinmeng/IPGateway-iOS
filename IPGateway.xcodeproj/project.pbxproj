@@ -7,16 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6C2A0DC817EC7340007C3997 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C2A0DC717EC7340007C3997 /* Default-568h@2x.png */; };
-		6C2A0DD217EC74BB007C3997 /* ipgw_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C2A0DCB17EC74BB007C3997 /* ipgw_57x57.png */; };
-		6C2A0DD317EC74BB007C3997 /* ipgw_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C2A0DCC17EC74BB007C3997 /* ipgw_72x72.png */; };
-		6C2A0DD417EC74BB007C3997 /* ipgw_76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C2A0DCD17EC74BB007C3997 /* ipgw_76x76.png */; };
-		6C2A0DD517EC74BB007C3997 /* ipgw_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C2A0DCE17EC74BB007C3997 /* ipgw_114x114.png */; };
-		6C2A0DD617EC74BB007C3997 /* ipgw_120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C2A0DCF17EC74BB007C3997 /* ipgw_120x120.png */; };
-		6C2A0DD717EC74BB007C3997 /* ipgw_144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C2A0DD017EC74BB007C3997 /* ipgw_144x144.png */; };
-		6C2A0DD817EC74BB007C3997 /* ipgw_152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C2A0DD117EC74BB007C3997 /* ipgw_152x152.png */; };
 		6CBA344919CC7662002B9A39 /* ValuePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CBA344819CC7662002B9A39 /* ValuePickerCell.xib */; };
 		6CBA344C19CC7975002B9A39 /* ValuePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBA344B19CC7975002B9A39 /* ValuePickerCell.m */; };
+		6CCD468A1DF8459C00C0080A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CCD46891DF8459C00C0080A /* Images.xcassets */; };
 		E877DC3A151D6657007F5B3A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E877DC38151D6657007F5B3A /* Localizable.strings */; };
 		E877DC49151D8708007F5B3A /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E877DC47151D8707007F5B3A /* SettingsViewController.xib */; };
 		E89B316B14D8E15900B00A6E /* ToggleSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E89B316A14D8E15900B00A6E /* ToggleSwitchCell.xib */; };
@@ -35,17 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6C2A0DC717EC7340007C3997 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
-		6C2A0DCB17EC74BB007C3997 /* ipgw_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipgw_57x57.png; sourceTree = SOURCE_ROOT; };
-		6C2A0DCC17EC74BB007C3997 /* ipgw_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipgw_72x72.png; sourceTree = SOURCE_ROOT; };
-		6C2A0DCD17EC74BB007C3997 /* ipgw_76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipgw_76x76.png; sourceTree = SOURCE_ROOT; };
-		6C2A0DCE17EC74BB007C3997 /* ipgw_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipgw_114x114.png; sourceTree = SOURCE_ROOT; };
-		6C2A0DCF17EC74BB007C3997 /* ipgw_120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipgw_120x120.png; sourceTree = SOURCE_ROOT; };
-		6C2A0DD017EC74BB007C3997 /* ipgw_144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipgw_144x144.png; sourceTree = SOURCE_ROOT; };
-		6C2A0DD117EC74BB007C3997 /* ipgw_152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipgw_152x152.png; sourceTree = SOURCE_ROOT; };
 		6CBA344819CC7662002B9A39 /* ValuePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValuePickerCell.xib; sourceTree = "<group>"; };
 		6CBA344A19CC7975002B9A39 /* ValuePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValuePickerCell.h; sourceTree = "<group>"; };
 		6CBA344B19CC7975002B9A39 /* ValuePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValuePickerCell.m; sourceTree = "<group>"; };
+		6CCD46891DF8459C00C0080A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E877DC39151D6657007F5B3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E877DC3F151D6707007F5B3A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E877DC43151D6759007F5B3A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/IPGWViewController_iPad.xib"; sourceTree = "<group>"; };
@@ -92,7 +78,6 @@
 		E8ADCEF114B5681F00889AAA = {
 			isa = PBXGroup;
 			children = (
-				E8E5BD6E15734F95004BE6F9 /* Icons */,
 				E8ADCF0614B5682000889AAA /* IPGateway */,
 				E8ADCEFF14B5682000889AAA /* Frameworks */,
 				E8ADCEFD14B5682000889AAA /* Products */,
@@ -137,6 +122,7 @@
 				6CBA344A19CC7975002B9A39 /* ValuePickerCell.h */,
 				6CBA344B19CC7975002B9A39 /* ValuePickerCell.m */,
 				6CBA344819CC7662002B9A39 /* ValuePickerCell.xib */,
+				6CCD46891DF8459C00C0080A /* Images.xcassets */,
 			);
 			path = IPGateway;
 			sourceTree = "<group>";
@@ -151,22 +137,6 @@
 				E8ADCF0E14B5682000889AAA /* IPGateway-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E8E5BD6E15734F95004BE6F9 /* Icons */ = {
-			isa = PBXGroup;
-			children = (
-				6C2A0DCB17EC74BB007C3997 /* ipgw_57x57.png */,
-				6C2A0DC717EC7340007C3997 /* Default-568h@2x.png */,
-				6C2A0DCC17EC74BB007C3997 /* ipgw_72x72.png */,
-				6C2A0DCD17EC74BB007C3997 /* ipgw_76x76.png */,
-				6C2A0DCE17EC74BB007C3997 /* ipgw_114x114.png */,
-				6C2A0DCF17EC74BB007C3997 /* ipgw_120x120.png */,
-				6C2A0DD017EC74BB007C3997 /* ipgw_144x144.png */,
-				6C2A0DD117EC74BB007C3997 /* ipgw_152x152.png */,
-			);
-			name = Icons;
-			path = IPGateway;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +170,7 @@
 				TargetAttributes = {
 					E8ADCEFB14B5682000889AAA = {
 						DevelopmentTeam = RAE237RSGC;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -228,19 +199,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8ADCF0B14B5682000889AAA /* InfoPlist.strings in Resources */,
-				6C2A0DD517EC74BB007C3997 /* ipgw_114x114.png in Resources */,
-				6C2A0DD417EC74BB007C3997 /* ipgw_76x76.png in Resources */,
 				E8ADCF1714B5682000889AAA /* IPGWViewController_iPhone.xib in Resources */,
 				E8ADCF1A14B5682000889AAA /* IPGWViewController_iPad.xib in Resources */,
 				E8FB815114B8161B00F6178C /* noname-lake.jpg in Resources */,
-				6C2A0DD617EC74BB007C3997 /* ipgw_120x120.png in Resources */,
-				6C2A0DD717EC74BB007C3997 /* ipgw_144x144.png in Resources */,
-				6C2A0DC817EC7340007C3997 /* Default-568h@2x.png in Resources */,
-				6C2A0DD817EC74BB007C3997 /* ipgw_152x152.png in Resources */,
 				E89B316B14D8E15900B00A6E /* ToggleSwitchCell.xib in Resources */,
+				6CCD468A1DF8459C00C0080A /* Images.xcassets in Resources */,
 				E877DC3A151D6657007F5B3A /* Localizable.strings in Resources */,
-				6C2A0DD317EC74BB007C3997 /* ipgw_72x72.png in Resources */,
-				6C2A0DD217EC74BB007C3997 /* ipgw_57x57.png in Resources */,
 				E877DC49151D8708007F5B3A /* SettingsViewController.xib in Resources */,
 				6CBA344919CC7662002B9A39 /* ValuePickerCell.xib in Resources */,
 			);
@@ -397,8 +361,11 @@
 		E8ADCF1E14B5682000889AAA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = RAE237RSGC;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IPGateway/IPGateway-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -415,8 +382,11 @@
 		E8ADCF1F14B5682000889AAA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = RAE237RSGC;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IPGateway/IPGateway-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
