@@ -330,8 +330,8 @@
         NSLog(@"information: **************\n%@",information);
 #endif
         if([[information substringToIndex:11] isEqualToString:@"SUCCESS=YES"]){
-            NSRange range = [content rangeOfString:@"用&nbsp;户&nbsp;名："];
-            NSString *name = [content substringWithRange:NSMakeRange(range.location + range.length + 9, 12)];
+            NSRange range = [content rangeOfString:@"USERNAME="];
+            NSString *name = [content substringWithRange:NSMakeRange(range.location + range.length, 10)];
             name = [name substringToIndex:[name rangeOfString:@"</td>"].location];
             NSString *IP = [self findItem:@"IP" ofInfomation:information];
             NSString *scope = [self findItem:@"SCOPE" ofInfomation:information];
